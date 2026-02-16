@@ -93,3 +93,74 @@ status: "Draft"
 
 ### Music
 <!-- Musical style, adaptive music system, layer triggers -->
+
+---
+
+## 8. Design System
+
+> **How to use**: Fill this out during **Phase 1 (Pre-Production)** with the **Art Director** agent. This becomes the single source of truth for all visual decisions.
+
+### Color Palette
+
+| Role | Color | Hex | Usage |
+|------|-------|-----|-------|
+| Primary | | | Main actions, CTAs, key UI elements |
+| Secondary | | | Supporting elements, secondary actions |
+| Accent | | | Highlights, notifications, rewards |
+| Background | | | Panels, menus, overlays |
+| Surface | | | Cards, input fields, elevated containers |
+| Text Primary | | | Body text, headings |
+| Text Secondary | | | Captions, hints, disabled labels |
+| Success | | | Health full, objectives complete |
+| Warning | | | Low resource, caution states |
+| Danger | | | Damage, death, critical alerts |
+
+> **Accessibility**: Ensure text-on-background combos meet **WCAG AA** (≥ 4.5:1 contrast ratio). Test with a colorblind simulator.
+
+### Typography Scale
+
+| Level | Size | Weight | Use Case |
+|-------|------|--------|----------|
+| Display | 48px | Bold | Title screens, splash |
+| H1 | 32px | Bold | Screen headers |
+| H2 | 24px | SemiBold | Section headers |
+| H3 | 18px | SemiBold | Subsection headers |
+| Body | 16px | Regular | General text |
+| Caption | 12px | Regular | Labels, timestamps, hints |
+| Overline | 10px | Bold (uppercase) | Categories, tags |
+
+> **Font family**: `<!-- e.g., Inter, Roboto, or a custom game font -->`
+
+### Spacing Grid
+
+Base unit: `4px`. All spacing should be multiples of the base.
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| xs | 4px | Inline element gaps |
+| sm | 8px | Tight padding, icon gaps |
+| md | 16px | Standard padding, element spacing |
+| lg | 24px | Section spacing |
+| xl | 32px | Screen-level margins |
+| 2xl | 48px | Major section separations |
+
+### Iconography
+
+| Property | Value |
+|----------|-------|
+| Style | <!-- Outlined / Filled / Rounded --> |
+| Size standard | 24×24px (touch target: 44×44px minimum) |
+| Stroke width | <!-- 1.5px / 2px --> |
+
+### HUD Safe Zones
+
+<!-- Define where HUD elements can be placed relative to gameplay -->
+
+| Zone | Position | What goes here |
+|------|----------|----------------|
+| Top-left | Health, shields | Critical player state |
+| Top-right | Score, timer | Session info |
+| Bottom-center | Action bar, abilities | Active controls |
+| Corners | Minimap, compass | Navigation aids |
+
+> **Rule**: No critical gameplay info in the center 60% of the screen — that's the player's focus area.
