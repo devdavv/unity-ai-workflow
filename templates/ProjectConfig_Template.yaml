@@ -1,0 +1,57 @@
+# ProjectConfig Template
+# Fill this out with the Architect agent during Phase 1 (Pre-Production)
+# This file is the AI's primary context snapshot for your project
+
+project_name: ""
+genre: ""
+target_platforms: []
+
+# Unity
+unity_version: "6.2.0f1"
+render_pipeline: "URP"            # URP | HDRP | Built-in
+scripting_backend: "IL2CPP"       # IL2CPP | Mono
+ui_system: "UIToolkit"            # UIToolkit | UGUI | Mixed
+folder_strategy: "feature-based"  # feature-based | type-based
+networking: "none"                # none | NGO | Mirror | Photon | Custom
+async_pattern: "Awaitable"       # Awaitable | UniTask | Coroutines
+use_ecs_dots: false
+
+# Packages (name: version)
+packages:
+  com.unity.inputsystem: "1.11.0"
+  # com.unity.cinemachine: "3.1.0"
+  # com.unity.textmeshpro: "4.0.0"
+
+# Third-Party
+third_party: []
+  # - name: "DOTween"
+  #   version: "1.2.745"
+  #   namespace: "DG.Tweening"
+
+# Game Feel Middleware
+feel_tools:
+  tweening: "none"          # DOTween | PrimeTween | LeanTween | none
+  feedback_system: "Custom" # FEEL | MMFeedbacks | Custom | none
+  audio: "Unity"            # FMOD | Wwise | Unity
+  camera: "Cinemachine"     # Cinemachine | Custom
+
+# MCP Integrations
+mcp:
+  unity_mcp: false
+  github_mcp: false
+  linear_mcp: false
+  notion_mcp: false
+
+# Documentation & Task Management
+task_management: "None"   # Linear | Jira | Notion | None
+documentation: "Markdown" # Notion | Confluence | Markdown | None
+
+# Behavior
+auto_confirm: false       # Skip confirmation prompts
+prototype_mode: false     # Relax architecture rules for rapid iteration
+
+# Rule Overrides (uncomment to enable)
+# rule_overrides:
+#   allow_debug_log: true
+#   allow_ugui: true
+#   allow_coroutines_for_logic: true
