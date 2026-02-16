@@ -79,3 +79,17 @@ Some tasks span multiple domains. In that case:
 1. Load ALL relevant templates.
 2. Use the **primary** agent persona for the dominant aspect.
 3. **Note** secondary concerns in your response (e.g., "This gameplay system will also need UI work — I'll flag that for the UI Specialist pass").
+
+---
+
+## Skill Self-Improvement
+
+> Agents should be aware of the `skill-creator` skill. If you find yourself performing **repetitive tasks** that don't have an existing skill — the same code patterns, the same file structures, the same tool sequences — suggest creating a new skill.
+
+**When to suggest**: After completing a task, if you notice:
+- You wrote boilerplate that would be identical next time.
+- You followed a multi-step process that could be encoded.
+- The user asked for something that required domain knowledge not currently in any skill.
+
+**How to suggest**: Simply mention it:
+> "I noticed we've done this pattern twice now. Want me to create a new skill for it using `/skill-creator`?"

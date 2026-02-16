@@ -2,14 +2,45 @@
 
 A comprehensive, agent-first toolkit for AI-assisted Unity development. Designed primarily for **Google Antigravity IDE**, this repository provides the "brain" (rules, agents, skills, and workflows) to turn your AI assistant into a group of expert Unity team members.
 
+## 📂 Recommended Workspace Structure
+
+> [!IMPORTANT]
+> For the best AI agent experience, **don't open the Unity project directly** in Antigravity. Instead, create a **parent workspace folder** that contains both your Unity project and local docs. This lets the AI read design documents, templates, AND Unity code simultaneously.
+
+```
+MyGame/                          ← Open THIS folder in Antigravity
+├── .agent/                      ← AI brain (copied from this repo)
+│   ├── rules/
+│   ├── agents/
+│   ├── skills/
+│   └── workflows/
+├── docs/                        ← Living documents (filled during pre-prod)
+│   ├── ProjectConfig.yaml
+│   ├── GDD.md
+│   ├── TDD.md
+│   ├── GFD.md
+│   └── SprintPlan.md
+├── templates/                   ← Pristine starters (for reference)
+└── MyGameUnity/                 ← Unity project (created via Unity Hub)
+    ├── Assets/
+    ├── Packages/
+    └── ProjectSettings/
+```
+
 ## 🚀 Quick Start
 
-1. **Copy the Toolkit**: Copy the `.agent/` folder from this repository into the root of your Unity project.
-2. **Configure your Project**: Copy `templates/ProjectConfig_Template.yaml` to your project's `docs/ProjectConfig.yaml` and fill out your project details.
-3. **Connect MCPs**: Enable the recommended MCP servers in Antigravity (Agent panel > ... > MCP Servers):
-   - **Unity MCP**: For in-editor scene/prefab/asset management.
-   - **GitHub MCP**: For automated git operations.
-   - **Linear/Notion MCP**: For task and doc syncing.
+1. **Create your workspace**: Create a parent folder for your game (e.g. `MyGame/`).
+2. **Copy the toolkit**: Copy **all three folders** from this repo into your workspace root:
+   - `.agent/` — The AI brain (rules, agents, skills, workflows)
+   - `templates/` — Pristine document starters
+   - `docs/` — Reference documentation and phase guides
+3. **Create your Unity project**: Inside the workspace, create your Unity project via Unity Hub (e.g. `MyGame/MyGameUnity/`).
+4. **Configure your project**: Copy `templates/ProjectConfig_Template.yaml` → `docs/ProjectConfig.yaml` and fill it out with the Architect agent.
+5. **Open the workspace**: Open the **parent folder** (not the Unity folder) in Antigravity.
+6. **Connect MCPs** (Agent panel > ... > MCP Servers):
+   - **Unity MCP**: For in-editor scene/prefab/asset management
+   - **GitHub MCP**: For automated git operations
+   - **Linear/Notion MCP**: For task and doc syncing
 
 ## 🧠 How it Works
 
