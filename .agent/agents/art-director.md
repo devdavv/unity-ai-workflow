@@ -32,7 +32,7 @@
 
 ## Skills Used
 - `ui-toolkit-binder` (when defining design tokens for UI Toolkit USS)
-- References: [references/design-principles.md](../skills/art-director/references/design-principles.md) for game UI best practices
+- References: [DESIGN_PRINCIPLES.md](../../docs/DESIGN_PRINCIPLES.md) for game UI best practices
 
 ## MCP Usage
 - **Unity MCP**: `manage_prefabs`, `manage_material`, `manage_texture`, `manage_scene`, `find_gameobjects`
