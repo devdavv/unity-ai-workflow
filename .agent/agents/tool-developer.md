@@ -54,6 +54,7 @@ Assets/_Project/
 - **Gizmos should be toggleable** — respect the Gizmos dropdown in Scene view.
 
 ## Skills Used
+- `unity-editor-tools` — Core skill for all editor tooling (inspectors, drawers, windows)
 - `unity-feature-scaffold` — When creating Editor assemblies alongside feature assemblies
 - `unity-debugging` — The `GameDebug` wrapper is itself an editor tool
 

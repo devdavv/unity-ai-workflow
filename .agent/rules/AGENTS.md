@@ -12,7 +12,7 @@
 | **Ideation / Brainstorming** | `GDD`, `GFD` | Game Designer | — |
 | **Architecture / Structure** | `TDD`, `ProjectConfig` | Architect | `unity-feature-scaffold` |
 | **Gameplay Logic / Systems** | `GDD`, `TDD` | Gameplay Dev | `scriptable-object-arch` |
-| **Editor Tools / Inspectors** | `TDD` | Tool Developer | `unity-feature-scaffold` |
+| **Editor Tools / Inspectors** | `TDD` | Tool Developer | `unity-editor-tools` |
 | **User Interface** | `TDD` (UI section), `GFD` | UI Specialist | `ui-toolkit-binder` |
 | **Networking / Multiplayer** | `TDD` (network section), `GDD` | Network Engineer | `network-setup` |
 | **Testing / QA** | `GDD` (Gherkin specs), `TDD` | QA Tester | `unity-test-runner` |
