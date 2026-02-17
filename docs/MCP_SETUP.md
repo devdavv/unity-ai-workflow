@@ -28,9 +28,9 @@ Built into most AI coding assistants (Antigravity, Claude Code, Cursor). No sepa
 
 ## Linear MCP
 
-**Package**: [linear/linear-mcp-server](https://github.com/linear/linear-mcp-server)
+**Official docs**: [linear.app/docs/mcp](https://linear.app/docs/mcp)
 
-Requires a Linear API key. Configure in your AI assistant's MCP settings.
+Follow Linear's official setup instructions. Do NOT guess package URLs.
 
 **Capabilities**: Create/manage issues, projects, sprints, labels.
 
@@ -38,8 +38,8 @@ Requires a Linear API key. Configure in your AI assistant's MCP settings.
 
 ## Notion MCP
 
-**Package**: [makenotion/notion-mcp-server](https://github.com/makenotion/notion-mcp-server)
+**Official docs**: [notion.so/help/mcp](https://www.notion.so/help/mcp)
 
-Requires a Notion integration token. Configure in your AI assistant's MCP settings.
+Follow Notion's official setup instructions. Do NOT guess package URLs.
 
 **Capabilities**: Read/write pages, databases, create design docs.
