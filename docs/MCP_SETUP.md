@@ -38,7 +38,7 @@ Follow Linear's official setup instructions. Do NOT guess package URLs.
 
 ## Notion MCP
 
-**Official docs**: [notion.so/help/mcp](https://www.notion.so/help/mcp)
+**Official docs**: [developers.notion.com/guides/mcp](https://developers.notion.com/guides/mcp/mcp)
 
 Follow Notion's official setup instructions. Do NOT guess package URLs.
 
