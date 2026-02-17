@@ -39,3 +39,4 @@
 - **Test First**: Write the test from the Gherkin scenario, then implement until it passes.
 - **Version Awareness**: Never assume an API exists — check the package version first.
 - **Prototype → Polish**: Build the MVP environment with placeholder art, then hand off to Art Director.
+- **Flag Tooling Needs**: When building a component with spatial data, complex configuration, or designer-facing parameters — suggest a Tool Developer pass for custom inspectors/gizmos.
