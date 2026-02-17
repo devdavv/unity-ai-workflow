@@ -17,7 +17,11 @@ Initialize a new Unity project with all infrastructure: folders, packages, git, 
 
 ### 1. Verify Environment
 - Confirm Unity version matches ProjectConfig.
-- Check which MCPs are connected (Unity, GitHub, Linear, Notion).
+- **Ask the user** which tools they have available:
+  - **Unity MCP** — "Do you have Unity MCP installed? This lets me inspect/modify scenes, packages, and run tests directly."
+  - **GitHub MCP** — "Do you have GitHub MCP connected? This lets me create repos, branches, and commits."
+  - **Linear/Notion** — "Are you using Linear, Notion, or Jira for task management? If so, do you have the MCP connected?"
+- Update `ProjectConfig.yaml → mcp` section based on answers.
 - Report status to user.
 
 ### 2. Create Folder Structure
@@ -30,6 +34,8 @@ Use `unity-project-setup` skill:
 From `ProjectConfig.yaml → packages`:
 - Via Unity MCP `manage_packages` if available.
 - Otherwise, provide manifest.json entries for manual install.
+- **Recommend essential packages** based on project type (e.g., 2D Sprite, TextMeshPro, Cinemachine).
+- **Install third-party** from `ProjectConfig.yaml → third_party` (e.g., DOTween).
 
 ### 4. Configure Editor Settings
 Via Unity MCP or manual instructions:

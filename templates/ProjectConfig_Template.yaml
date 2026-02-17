@@ -36,11 +36,13 @@ feel_tools:
   camera: "Cinemachine"     # Cinemachine | Custom
 
 # MCP Integrations
+# Ask user during /setup-project which MCPs they have configured.
+# Enable only what is available — never assume they are connected.
 mcp:
-  unity_mcp: false
-  github_mcp: false
-  linear_mcp: false
-  notion_mcp: false
+  unity_mcp: false      # Lets AI inspect/modify scenes, prefabs, packages, run tests
+  github_mcp: false     # Lets AI create repos, branches, commits, PRs
+  linear_mcp: false     # Lets AI create/manage tasks and sprints
+  notion_mcp: false     # Lets AI read/write design docs in Notion
 
 # Documentation & Task Management
 task_management: "None"   # Linear | Jira | Notion | None
@@ -48,10 +50,9 @@ documentation: "Markdown" # Notion | Confluence | Markdown | None
 
 # Behavior
 auto_confirm: false       # Skip confirmation prompts
-prototype_mode: false     # Relax architecture rules for rapid iteration
+prototype_mode: false     # See RULES.md Section 7 for exact relaxation table
 
 # Rule Overrides (uncomment to enable)
 # rule_overrides:
-#   allow_debug_log: true
 #   allow_ugui: true
 #   allow_coroutines_for_logic: true

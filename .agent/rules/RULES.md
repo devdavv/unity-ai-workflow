@@ -123,16 +123,38 @@ Rules can be relaxed in two ways:
 ```yaml
 # In docs/ProjectConfig.yaml
 rule_overrides:
-  allow_debug_log: true       # Allows raw Debug.Log
   allow_ugui: true             # Allows UGUI alongside UI Toolkit
   allow_coroutines_for_logic: true  # Allows coroutines for game logic
-  prototype_mode: true         # Relaxes architecture rules globally
+  prototype_mode: true         # See table below for exact relaxations
 ```
 
 ### B. Inline Override
 ```csharp
-// OVERRIDE: allow_debug_log — temporary logging for physics investigation
-Debug.Log($"Velocity: {rb.linearVelocity}");
+// OVERRIDE: allow_public_field — prototype quick iteration
+public float moveSpeed = 5f;
 ```
 
-> **Prototype Mode**: When `prototype_mode: true`, the AI relaxes architecture enforcement (no asmdef required, public fields allowed, Debug.Log allowed). Use this for rapid iteration, but **always** clean up before production.
+### Prototype Mode — Explicit Relaxations
+
+When `prototype_mode: true`, the following rules are relaxed. **Everything else stays enforced.**
+
+| Rule | Normal Mode | Prototype Mode |
+|------|------------|----------------|
+| Assembly Definitions | Required for all feature code | Optional — scripts can live without `.asmdef` |
+| Field Visibility | `[SerializeField] private` only | `public` fields allowed for rapid Inspector tuning |
+| ScriptableObjects for data | Required — never hardcode data | Inline constants/magic numbers allowed |
+| XML Documentation | On public API methods | Optional — skip docs for speed |
+| Interface Segregation | Interfaces required for testability | Direct concrete references allowed |
+| Feature Folders | Required feature-based organization | Flat `Scripts/` folder allowed |
+
+**These rules are NEVER relaxed, even in prototype mode:**
+
+| Rule | Always Enforced | Reason |
+|------|-----------------|--------|
+| **GameDebug** (never raw `Debug.Log`) | ✅ Always | Costs nothing to use correctly |
+| **Cache component references** | ✅ Always | Prevents hard-to-find perf bugs |
+| **No `GetComponent` in Update** | ✅ Always | Performance habit |
+| **New Input System only** | ✅ Always | Legacy input doesn't port |
+| **Never touch `.meta` files** | ✅ Always | Corrupts project |
+
+> **Rule of thumb**: Prototype mode relaxes *architecture* but never *practices*. You can skip structure, but you can't skip quality.
