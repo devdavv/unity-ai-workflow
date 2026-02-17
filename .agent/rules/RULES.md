@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour { ... }
 ### Coding Standards
 - Follow `docs/CODING_STANDARDS.md` for formatting (K&R braces, 4-space indent, etc.).
 - Follow `docs/NAMING_CONVENTIONS.md` for naming (refined collaboratively during pre-production).
+- Follow `docs/GIT_CONVENTIONS.md` for commits (`type(scope): description`), branch naming, and PR format.
 
 ---
 
