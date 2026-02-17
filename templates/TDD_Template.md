@@ -19,9 +19,25 @@ status: "Draft"
 ```
 Core.asmdef (no dependencies)
   ├── Gameplay.asmdef → [Core]
+  │     └── Gameplay.Editor.asmdef → [Gameplay] (Editor only)
   ├── UI.asmdef → [Core]
+  │     └── UI.Editor.asmdef → [UI] (Editor only)
   ├── Networking.asmdef → [Core, Gameplay]
   └── Tests.asmdef → [Core, Gameplay, UI]
+```
+
+### Feature Folder Layout
+
+```
+Assets/_Project/Features/{FeatureName}/
+├── Runtime/
+│   ├── {FeatureName}.asmdef
+│   └── *.cs
+├── Editor/                              ← Custom Inspectors, Gizmos, tools
+│   ├── {FeatureName}.Editor.asmdef      ← References Runtime asmdef, Editor platform only
+│   └── *.cs
+└── Tests/
+    └── {FeatureName}.Tests.asmdef
 ```
 
 ### Dependency Rules
@@ -129,7 +145,21 @@ Client Input → Server Validation → State Update → Client Sync
 
 ---
 
-## 8. Third-Party Libraries
+## 8. Editor Tooling
+
+<!-- List planned custom tools. The Tool Developer agent builds these alongside features. -->
+
+| Feature | Tool Type | Purpose |
+|---------|-----------|--------|
+| <!-- e.g. Board --> | <!-- Custom Inspector --> | <!-- Visualize grid, edit cell types --> |
+| <!-- e.g. Patrol Path --> | <!-- Handles + Gizmos --> | <!-- Drag waypoints in Scene view --> |
+| <!-- e.g. Level Data --> | <!-- EditorWindow --> | <!-- Batch validate all levels --> |
+
+> **Skill**: Use `unity-editor-tools` to generate these tools. See `tool-developer` agent.
+
+---
+
+## 9. Third-Party Libraries
 
 | Library | Version | Purpose | License |
 |---------|---------|---------|---------|
@@ -137,7 +167,7 @@ Client Input → Server Validation → State Update → Client Sync
 
 ---
 
-## 9. Open Technical Questions
+## 10. Open Technical Questions
 
 1. 
 2. 
