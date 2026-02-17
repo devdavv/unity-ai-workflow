@@ -21,6 +21,7 @@ Initialize a new Unity project with all infrastructure: folders, packages, git, 
   - **Unity MCP** — "Do you have Unity MCP installed? This lets me inspect/modify scenes, packages, and run tests directly."
   - **GitHub MCP** — "Do you have GitHub MCP connected? This lets me create repos, branches, and commits."
   - **Linear/Notion** — "Are you using Linear, Notion, or Jira for task management? If so, do you have the MCP connected?"
+- If the user needs install links, reference `docs/MCP_SETUP.md` — **never guess URLs**.
 - Update `ProjectConfig.yaml → mcp` section based on answers.
 - Report status to user.
 
