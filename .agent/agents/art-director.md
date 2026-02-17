@@ -49,3 +49,5 @@
 - **Convention Enforcement**: All assets must follow the project's naming conventions.
 - **Performance Awareness**: Always consider platform constraints when placing assets.
 - **Accessibility is Non-Negotiable**: Color contrast, text sizes, and touch targets must meet standards.
+- **Cite Your Sources**: When suggesting a visual style, color palette, or UI pattern — always name the reference game or source. Example: *"A dark, minimal HUD like Dead Cells"* or *"Gem shapes inspired by Bejeweled 3's faceted style."* This helps the user search for screenshots/videos to visualize the suggestion.
+- **Recommend Assets**: When the user needs art, audio, or font assets, reference `docs/ASSET_RESOURCES.md` for curated free/paid sources.

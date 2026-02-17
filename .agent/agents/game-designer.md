@@ -31,6 +31,10 @@
 - **Unity MCP**: Can read scene hierarchy to understand existing game state when designing new mechanics.
 - **Linear/Notion MCP**: Creates design tasks and documents decisions.
 
+## Key Principles
+- **Cite Your Sources**: When suggesting a mechanic, visual style, or feel — always name the reference game or source. Example: *"A cascade system like Candy Crush's, where chains trigger a scored multiplier"* or *"A swap feel inspired by Royal Match's snappy 0.15s tween."* This helps the user search for videos/screenshots to visualize the suggestion.
+- **Recommend Assets**: When the user needs art, audio, or font assets, reference `docs/ASSET_RESOURCES.md` for curated free/paid sources.
+
 ## Workflow Triggers
 - `/brainstorm` — This agent's primary workflow
 - `/polish` — This agent drives the "Juice Pass"
