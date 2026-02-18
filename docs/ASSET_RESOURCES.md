@@ -118,6 +118,77 @@
 
 ---
 
+## Production Tools
+
+Tools for managing your project, workflow, and team — not game assets, but essential to shipping.
+
+### Audio Management
+| Tool | Purpose | Notes |
+|------|---------|-------|
+| [Soundly](https://www.soundly.com) | SFX library browser + manager | Industry standard for sound designers; search, preview, drag-and-drop to Unity |
+| [SoundMiner](https://store.soundminer.com) | Local SFX library management | Paid; for teams with large private SFX libraries |
+
+### Project Management & Documentation
+| Tool | Purpose | Notes |
+|------|---------|-------|
+| [Linear](https://linear.app) | Sprint planning, issue tracking | Fast, keyboard-first; integrates via Linear MCP |
+| [Notion](https://www.notion.so) | Docs, wikis, design documents | Flexible; integrates via Notion MCP |
+| [Jira](https://www.atlassian.com/software/jira) | Issue tracking (larger teams) | Heavy but standard in studios |
+| [Trello](https://trello.com) | Kanban boards (solo/small teams) | Free; simple visual boards |
+| [Miro](https://miro.com) | Visual game design boards, mind maps | Free tier; great for feature ideation and system diagrams |
+
+### Version Control
+| Tool | Purpose | Notes |
+|------|---------|-------|
+| [GitHub Desktop](https://desktop.github.com) | Git GUI | Free; easiest on-ramp for non-technical team members |
+| [GitKraken](https://www.gitkraken.com) | Git GUI with visual history | Free for public repos; good for complex branch visualization |
+| [Sourcetree](https://www.sourcetreeapp.com) | Git GUI (Atlassian) | Free; Windows/Mac |
+
+### Communication & Community
+| Tool | Purpose | Notes |
+|------|---------|-------|
+| [Discord](https://discord.com) | Team comms + game dev communities | Free; `r/gamedev`, `r/unity`, itch.io servers for feedback |
+
+### Build & CI
+| Tool | Purpose | Notes |
+|------|---------|-------|
+| [GitHub Actions](https://github.com/features/actions) | Automated build + test pipelines | Free for public repos; Unity-compatible runners available |
+| [Unity Cloud Build](https://unity.com/products/unity-devops) | Cloud build for Unity projects | Managed service; paid |
+| [GameCI](https://game.ci) | Open-source Unity CI/CD for GitHub Actions | Free; recommended Unity CI setup |
+
+---
+
+## Notable Unity Packages
+
+> Reference these when recommending packages during `/setup-project` or feature planning.
+> Always check version against `ProjectConfig.yaml` before using any API.
+
+### Editor & Inspector Tools
+| Package | Purpose | Notes |
+|---------|---------|-------|
+| [Odin Inspector](https://odininspector.com) | Powerful custom inspector system | Paid (~$55); reduces custom editor code significantly |
+| [Tri Inspector](https://github.com/codewriter-packages/Tri-Inspector) | Odin-style inspector attributes | Free (MIT); great Odin alternative |
+| [NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes) | Lightweight inspector attributes | Free; simpler than Odin/Tri |
+
+### Gameplay & Architecture
+| Package | Purpose | Notes |
+|---------|---------|-------|
+| [DOTween](http://dotween.demigiant.com) | Tween engine | Free (Pro paid); most widely used; see `references/dotween.md` |
+| [PrimeTween](https://github.com/KyryloKuzyk/PrimeTween) | Zero-allocation tween engine | Free; Unity 6 native feel; see `references/primetween.md` |
+| [UniTask](https://github.com/Cysharp/UniTask) | Async/await for Unity | Free; use if `Awaitable` isn't sufficient |
+| [VContainer](https://vcontainer.hadashikick.jp) | Dependency injection | Free; lightweight, high-performance |
+| [Reflex](https://github.com/gustavopsantos/Reflex) | Dependency injection | Free (MIT); fastest DI for Unity; minimal API |
+| [Init(args)](https://assetstore.unity.com/packages/tools/utilities/init-args-200530) | DI + MonoBehaviour initialization | Paid; integrates with Unity's component model natively |
+| [Feel (More Mountains)](https://feel.moremountains.com) | Game feel feedback system | Paid; best-in-class for juice; see `game-feel-integrator` skill |
+
+### Utilities
+| Package | Purpose | Notes |
+|---------|---------|-------|
+| [Sirenix Odin Serializer](https://github.com/TeamSirenix/odin-serializer) | Advanced Unity serialization | Free (Apache 2.0); for complex data structures |
+| [UniRx](https://github.com/neuecc/UniRx) | Reactive extensions for Unity | Free; useful for event-driven architecture |
+
+---
+
 ## Adding New Tools
 
 > If you find a new tool, tell the AI: *"I saw this tool [link/name] — is it viable for our Unity workflow?"*
