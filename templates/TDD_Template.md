@@ -14,16 +14,31 @@ status: "Draft"
 
 ## 1. System Architecture
 
+> **Diagramming**: Use [Mermaid](https://mermaid.js.org) for all architecture diagrams in this document.
+> Mermaid renders natively on GitHub and in most IDEs. The Architect agent can generate diagrams directly.
+> For complex visual exploration, use [Miro](https://miro.com) boards before committing to Mermaid.
+
 ### Assembly Definition Graph
 
-```
-Core.asmdef (no dependencies)
-  ├── Gameplay.asmdef → [Core]
-  │     └── Gameplay.Editor.asmdef → [Gameplay] (Editor only)
-  ├── UI.asmdef → [Core]
-  │     └── UI.Editor.asmdef → [UI] (Editor only)
-  ├── Networking.asmdef → [Core, Gameplay]
-  └── Tests.asmdef → [Core, Gameplay, UI]
+```mermaid
+graph TD
+    Core["Core.asmdef"]
+    Gameplay["Gameplay.asmdef"]
+    UI["UI.asmdef"]
+    Networking["Networking.asmdef"]
+    Tests["Tests.asmdef"]
+    GameplayEditor["Gameplay.Editor.asmdef (Editor only)"]
+    UIEditor["UI.Editor.asmdef (Editor only)"]
+
+    Core --> Gameplay
+    Core --> UI
+    Gameplay --> Networking
+    UI --> Networking
+    Gameplay --> GameplayEditor
+    UI --> UIEditor
+    Core --> Tests
+    Gameplay --> Tests
+    UI --> Tests
 ```
 
 ### Feature Folder Layout
@@ -59,6 +74,25 @@ Assets/_Project/Features/{FeatureName}/
 | State Machine | Player controller, AI | Clear state transitions |
 | | | |
 
+### State Machine Diagram (example — replace with your own)
+
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Running : move input
+    Idle --> Jumping : jump input (grounded)
+    Running --> Idle : no input
+    Running --> Jumping : jump input (grounded)
+    Jumping --> Falling : apex reached
+    Falling --> Idle : landed
+    Falling --> WallSlide : touching wall
+    WallSlide --> Jumping : jump input
+    WallSlide --> Falling : released wall
+```
+
+> Add a state diagram for each stateful system (player controller, enemy AI, game manager, etc.).
+> Use `stateDiagram-v2` for state machines, `classDiagram` for class relationships, `sequenceDiagram` for system interactions.
+
 ---
 
 ## 3. Data Architecture
@@ -83,10 +117,15 @@ Assets/_Project/Features/{FeatureName}/
 
 ### Screen Flow
 
-```
-MainMenu → Lobby → Gameplay → Results → MainMenu
-              ↕        ↕
-          Settings   Pause
+```mermaid
+flowchart LR
+    MainMenu --> Lobby
+    Lobby --> Gameplay
+    Gameplay --> Results
+    Results --> MainMenu
+    MainMenu --> Settings
+    Lobby --> Settings
+    Gameplay --> Pause
 ```
 
 ### UI Data Binding (if UI Toolkit)
