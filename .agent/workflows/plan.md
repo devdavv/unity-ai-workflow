@@ -39,11 +39,12 @@ Create a numbered task list with:
 | # | Task | Size | Depends On | Agent | Status |
 |---|------|------|-----------|-------|--------|
 | 1 | Create PlayerHealth SO | S | — | Gameplay Dev | ⬜ |
-| 2 | Implement damage system | M | 1 | Gameplay Dev | ⬜ |
-| 3 | Write health tests | S | 2 | QA Tester | ⬜ |
-| 4 | Create health UI | M | 1 | UI Specialist | ⬜ |
-| 5 | Add hit feedback | S | 2,4 | Game Designer | ⬜ |
+| 2 | /implement-feature: damage system (incl. game feel) | M | 1 | Gameplay Dev + Game Designer | ⬜ |
+| 3 | /implement-feature: health UI (incl. animations) | M | 1 | UI Specialist + Game Designer | ⬜ |
+| 4 | Write health edge-case tests | S | 2 | QA Tester | ⬜ |
 ```
+
+> **Note**: Game feel (VFX, SFX, camera, tweens) is embedded inside each `/implement-feature` task — not a separate row. If a feature's game feel is explicitly deferred, mark it with `TODO(gamefeel)` and address it in Phase 5.
 
 ### 5. Output
 - Updated `docs/SprintPlan.md`

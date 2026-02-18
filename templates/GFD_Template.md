@@ -8,7 +8,7 @@ status: "Draft"
 
 # Game Feel Document
 
-> **How to use this template**: Work through the Feedback Matrix with the **Game Designer agent** during `/brainstorm` or `/polish`. Every meaningful player action should produce at least 3 types of feedback.
+> **How to use this template**: Work through the Feedback Matrix with the **Game Designer agent** during `/brainstorm` (initial pass), `/implement-feature` (one row per feature during production), or `/polish` (final tuning). Every meaningful player action should produce at least 3 types of feedback.
 
 ---
 

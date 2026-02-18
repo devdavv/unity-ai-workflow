@@ -1,10 +1,13 @@
 ---
-description: TDD-first code generation workflow for new scripts and systems.
+description: TDD-first code generation for utilities, helpers, data classes, ScriptableObjects, editor tools, and non-player-facing systems. Use for isolated code that doesn't require game feel integration. For player-facing gameplay features (mechanics, systems the player directly interacts with), prefer /implement-feature — it includes deep interrogation, game feel questions, GDD/GFD docs, and TDD all in one pass.
 ---
 
 # /create — Code Creation Workflow
 
-Generate new code following a test-driven development approach.
+Generate isolated code following a test-driven development approach.
+
+> **Scope**: Utilities, helpers, data classes, editor tools, and backend systems with no direct game feel.
+> For gameplay features: use `/implement-feature` instead.
 
 ## Agent
 **Gameplay Dev** (primary), or **UI Specialist** / **Network Engineer** depending on domain.
