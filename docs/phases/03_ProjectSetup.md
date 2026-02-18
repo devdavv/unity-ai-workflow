@@ -9,6 +9,9 @@ Create the Unity project skeleton with all infrastructure in place.
 
 ## Activities
 
+### 0. Dev Mode Selection
+Run `/setup-project` — it begins by asking the user which dev mode they want (Assistant / Mix / Automatic) and, if Automatic, runs a full onboarding Q&A so the AI can proceed independently. See [setup-project.md](../../.agent/workflows/setup-project.md) Step 0.
+
 ### 1. Folder Structure
 Create `Assets/_Project/` with all subfolders based on `folder_strategy`.
 

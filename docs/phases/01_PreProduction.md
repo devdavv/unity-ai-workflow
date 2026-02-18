@@ -13,6 +13,7 @@ The Architect agent guides the user through a comprehensive questionnaire:
 
 | Question | Decision | ProjectConfig Field |
 |----------|----------|-------------------|
+| Dev mode? | Assistant / Mix / Automatic | `ai_mode` |
 | Unity version? | 6.2.0f1 | `unity_version` |
 | Render pipeline? | URP / HDRP | `render_pipeline` |
 | UI system? | UIToolkit / UGUI | `ui_system` |
