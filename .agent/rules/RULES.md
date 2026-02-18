@@ -118,6 +118,35 @@ public class PlayerController : MonoBehaviour { ... }
 
 ## 7. Rule Override Mechanism
 
+---
+
+## 8. Dev Mode — AI Behavior by Mode
+
+> Read `ai_mode` from `ProjectConfig.yaml` at the start of every session.
+> This controls AI autonomy for the **entire project**.
+
+| Mode | Description | When AI Confirms | Explanation Level |
+|------|-------------|-----------------|-------------------|
+| **assistant** | User drives. AI assists, documents, recommends. | Every action — always wait | Verbose. Always explain reasoning and tradeoffs. |
+| **mix** | Collaborative. AI suggests; user confirms key decisions. **(default)** | Complex tasks, new features, architecture changes | Moderate. Explain on request. |
+| **automatic** | AI works autonomously after initial onboarding Q&A. | Destructive actions only | Minimal. Announce actions but don't wait. |
+
+### Automatic Mode — Onboarding Requirement
+Before proceeding autonomously, ask ALL of the following upfront:
+- One-sentence game pitch + core loop
+- Target platform(s) and genre
+- 1-3 reference games
+- Rough feature list (can be expanded)
+- Preferred packages (tweening, networking, etc.)
+- MCP availability (Unity, GitHub, Linear, Notion)
+
+Once answered, proceed through phases and features with no interruptions except for destructive operations (file deletion, force pushes, schema drops).
+
+### Assistant Mode — Waiting Requirement
+Never auto-proceed. Always surface options with tradeoffs. Always wait for the user to explicitly initiate the next step. The user builds; the AI advises.
+
+---
+
 Rules can be relaxed in two ways:
 
 ### A. ProjectConfig Flags

@@ -9,11 +9,34 @@ Initialize a new Unity project with all infrastructure: folders, packages, git, 
 ## Agent
 **Architect**
 
+## Steps
+
+### 0. Select Dev Mode
+Ask the user before anything else:
+
+> "Which dev mode do you want for this project?
+>
+> - **Assistant** — You build the game. I assist with documentation, recommendations, and explanations. I never proceed without your explicit direction.
+> - **Mix** (recommended default) — We collaborate. I suggest next steps and execute after you confirm key decisions.
+> - **Automatic** — Tell me your game idea and goals, I'll build the game with minimal interruptions.
+>
+> There's no wrong answer — you can change it later in `ProjectConfig.yaml → ai_mode`."
+
+**If automatic mode is selected**, ask ALL of the following now so the AI can proceed independently:
+1. One-sentence game pitch + core loop description
+2. Target platform(s) and genre
+3. 1-3 reference games
+4. Rough feature list (can expand during production)
+5. Preferred packages (tweening library, networking, etc.)
+6. MCP availability (Unity, GitHub, Linear, Notion)
+
+Set `ai_mode` in ProjectConfig.yaml based on the answer.
+
+---
+
 ## Prerequisites
 - Unity project created and open in Editor.
 - `docs/ProjectConfig.yaml` filled out (done during Phase 1 with Architect agent).
-
-## Steps
 
 ### 1. Verify Environment
 - Confirm Unity version matches ProjectConfig.

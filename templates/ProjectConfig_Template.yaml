@@ -49,7 +49,12 @@ task_management: "None"   # Linear | Jira | Notion | None
 documentation: "Markdown" # Notion | Confluence | Markdown | None
 
 # Behavior
-auto_confirm: false       # Skip confirmation prompts
+# Dev Mode: controls AI autonomy vs. user control for the whole project
+# assistant = AI assists only — user drives all decisions, AI explains and documents
+# mix       = AI suggests and executes after user confirmation (default, recommended)
+# automatic = AI works autonomously after initial onboarding Q&A, minimal interruptions
+ai_mode: "mix"
+auto_confirm: false       # Skip confirmation prompts (overridden by ai_mode: automatic)
 prototype_mode: false     # See RULES.md Section 7 for exact relaxation table
 
 # Rule Overrides (uncomment to enable)

@@ -1,34 +1,50 @@
 # Unity AI Workflow — Roadmap
 
-## 🎯 v0.1: Foundation (Current)
-- [x] Research and Planning (GPT + Gemini synthesis)
-- [/] Core Repository Structure (.agent/, templates/, docs/)
-- [/] Fundamental Rules (RULES.md, AGENTS.md)
-- [ ] Initial Agent Personas (Gameplay, Architect, Designer)
-- [ ] Basic Workflows (/brainstorm, /plan, /create)
+## ✅ v0.1–v0.4: Foundation (Complete)
 
-## 🏗️ v0.2: Skill Integration
-- [ ] UI Toolkit Binder (Unity 6.2 Runtime Data Binding)
-- [ ] Netcode Setup (NGO/Mirror-agnostic)
-- [ ] ScriptableObject Architecture
-- [ ] Unity MCP Deep Integration (Scene/Prefab management)
+All core infrastructure is built and working:
 
-## 🧪 v0.3: Testing & Debugging
-- [ ] Unity Test Runner Skill (NUnit generation)
-- [ ] 4-Phase Debugging Workflow
-- [ ] Custom `GameDebug` Wrapper generation
+- [x] Core repository structure (`.agent/`, `templates/`, `docs/`)
+- [x] Global rules & auto-routing (`RULES.md`, `AGENTS.md`)
+- [x] 8 Agent personas (Architect, Gameplay Dev, UI Specialist, Game Designer, QA Tester, Network Engineer, Art Director, Tool Developer)
+- [x] 7 Workflows (`/brainstorm`, `/plan`, `/create`, `/test`, `/debug`, `/polish`, `/setup-project`)
+- [x] 9 Skills (feature scaffold, UI toolkit binder, scriptable-object arch, game feel integrator, network setup, test runner, debugging, project setup, editor tools)
+- [x] 5 Templates (GDD, GFD, TDD, SprintPlan, ProjectConfig)
+- [x] 6 Phase guides (00 Ideation → 05 Polish)
+- [x] Coding standards, naming conventions, git conventions
+- [x] Asset resources, MCP setup docs, design principles
 
-## ✨ v0.4: Game Feel & Polish
-- [ ] Game Feel Integrator Skill (Tween middleware awareness)
-- [ ] GFD Feedback Matrix Template
-- [ ] `/polish` Workflow
+---
 
-## 📦 v0.5: First Alpha Release
-- [ ] Complete Phase Guides (00-05)
-- [ ] Naming Conventions & Coding Standards Templates
-- [ ] Full Repository Validation dry-run
+## 🔧 v0.5: Vision Alignment (Current)
+
+Advancing the repository from a foundation to a complete, opinionated workflow system:
+
+- [x] Three Dev Modes (Assistant / Mix / Automatic) — `ProjectConfig.yaml`, `RULES.md`, `AGENTS.md`
+- [x] `/implement-feature` workflow — unified feature loop with game feel integrated per-feature
+- [x] AI Generation Tools section — `docs/ASSET_RESOURCES.md` (Midjourney, Meshy, ElevenLabs, Suno, etc.)
+- [x] Phase 4 Production rewritten around the feature loop
+- [x] `/setup-project` now includes dev mode selection + automatic mode onboarding Q&A
+- [x] README rewritten to lead with dev modes and integrated game feel philosophy
+- [ ] Validate all skill descriptions follow Anthropic skill-creator trigger format
+- [ ] Phase 5 Polish guide — update to clarify role as "final tuning" not "first-time polish"
+
+---
 
 ## 🚀 v1.0: Public Release & Multi-IDE Support
-- [ ] Claude Code & Cursor porting
+
+- [ ] Claude Code support (`.claude/skills/`, CLAUDE.md, system prompt integration)
+- [ ] Cursor support (`.cursor/rules/`, `.mdc` format conversion)
+- [ ] Comprehensive sample project walkthrough using automatic mode (a complete game end-to-end)
 - [ ] Community feedback integration
-- [ ] Comprehensive "Sample Project" walkthrough
+- [ ] `skill-creator` skill for generating new Unity-specific skills from within the workflow
+
+---
+
+## 🔭 Future / Side Projects
+
+Tools for generating game assets with AI — potentially separate tooling or a skill:
+- Sprite generation pipeline (Stable Diffusion → Unity import)
+- SFX generation pipeline (ElevenLabs Sound FX → AudioClip)
+- 3D model pipeline (Meshy → FBX import → Unity materials)
+- Curated asset pack recommendations per game genre

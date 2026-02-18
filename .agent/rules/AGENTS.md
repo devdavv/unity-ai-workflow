@@ -11,7 +11,7 @@
 |-------------------------|-------------------|---------------|----------------|
 | **Ideation / Brainstorming** | `GDD`, `GFD` | Game Designer | — |
 | **Architecture / Structure** | `TDD`, `ProjectConfig` | Architect | `unity-feature-scaffold` |
-| **Gameplay Logic / Systems** | `GDD`, `TDD` | Gameplay Dev | `scriptable-object-arch` |
+| **Gameplay Logic / Systems** | `GDD`, `TDD`, `GFD` | Gameplay Dev + Game Designer | `scriptable-object-arch`, `game-feel-integrator` |
 | **Editor Tools / Inspectors** | `TDD` | Tool Developer | `unity-editor-tools` |
 | **User Interface** | `TDD` (UI section), `GFD` | UI Specialist | `ui-toolkit-binder` |
 | **Networking / Multiplayer** | `TDD` (network section), `GDD` | Network Engineer | `network-setup` |
@@ -44,15 +44,20 @@ Before loading any context, tell the user what you're about to do:
 ### Step 3: Load
 Read the indicated template files from the project's `docs/` folder (the filled-in versions, not the pristine templates). Read the agent persona file from `.agent/agents/`. Read the skill instructions from `.agent/skills/`.
 
-### Step 4: Confirm (if complex)
-For simple tasks (adding a method, fixing a bug), proceed after announcing.
-For complex tasks (new feature, architecture change), wait for user confirmation.
+### Step 4: Confirm (mode-dependent)
+Read `ai_mode` from `ProjectConfig.yaml`:
+- **assistant**: Always wait for explicit user confirmation, even for simple tasks. Present options with tradeoffs.
+- **mix**: Proceed for simple tasks (adding a method, fixing a bug). Wait for confirmation on complex tasks (new feature, architecture change, new agent/skill loaded).
+- **automatic**: Proceed immediately after announcing. Only pause for destructive actions (file deletion, force push, irreversible changes).
 
-### Step 5: Suggest Workflows
+### Step 5: Suggest Workflows (mode-aware)
+In **automatic mode**, don't suggest — just invoke the appropriate workflow directly.
+In **mix/assistant mode**, suggest and wait:
 If the task maps to a workflow command, suggest it:
 - New idea → suggest `/brainstorm`
-- Breaking down a feature → suggest `/plan`
-- Writing new code → suggest `/create`
+- Breaking down a sprint → suggest `/plan`
+- Implementing a new feature → suggest `/implement-feature` (preferred — includes game feel)
+- Writing isolated code / utility → suggest `/create`
 - After implementation → suggest `/test`
 - Bug or unexpected behavior → suggest `/debug`
 - Feature works but feels "dry" → suggest `/polish`
