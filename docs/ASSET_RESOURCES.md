@@ -62,6 +62,7 @@
 | [Material Symbols](https://fonts.google.com/icons) | Free | Google's icon set, scalable |
 | [Flaticon](https://www.flaticon.com) | Free + Paid | Massive icon library |
 | [Game-Icons.net](https://game-icons.net) | Free (CC BY) | RPG/game-specific icons |
+| [Iconify](https://iconify.design) | 200k+ icons, multiple icon sets | Free; Figma plugin available; [UNVERIFIED: verify Figma/Pencil plugin integration] |
 
 ## Tools & Generators
 
@@ -71,6 +72,45 @@
 | [Piskel](https://www.piskelapp.com) | Pixel art (browser) | Free, quick prototyping |
 | [Coolors](https://coolors.co) | Color palette generator | Free, great for design systems |
 | [ShaderToy](https://www.shadertoy.com) | Shader inspiration | Free, community shader library |
+
+---
+
+## Shaders & Procedural Graphics
+
+> Use shaders as a **primary graphics strategy** — not just Phase 5 polish. Shaders can replace sprites, textures, and many 3D assets entirely for stylized or minimal-art games. This approach gives full creative control with no external art pipeline dependencies.
+>
+> **Portable stack** — built-in Unity only (no paid packages required):
+
+| Approach | When to Use | Notes |
+|----------|------------|-------|
+| **URP Shader Graph** | Most cases — 2D effects, stylized materials, UI glow | Node-based, URP/HDRP native; no code required; preferred starting point |
+| **Custom HLSL shaders** | Performance-critical or highly custom effects | Vertex/fragment; full control; steeper learning curve |
+| **URP Render Features** | Fullscreen effects (outline, bloom, chromatic aberration, scanlines) | Applied as post-process pass; see URP Renderer Feature docs |
+| **Shader Graph + VFX Graph** | Particle systems driven by shader logic | Allowed per RULES.md — VFX Graph is the approved particle tool |
+| [ShaderToy](https://www.shadertoy.com) | GLSL inspiration library | Free; port to HLSL manually; filter by complexity |
+
+### Learning Resources [UNVERIFIED: check for current Unity 6 compatibility]
+| Resource | Focus | Notes |
+|----------|-------|-------|
+| [Catlike Coding](https://catlikecoding.com/unity/tutorials/) | HLSL from scratch, URP pipeline deep dives | Free; most thorough Unity shader tutorials available |
+| [Cyanilux](https://www.cyanilux.com/tutorials/) | Shader Graph + URP practical breakdowns | Free; author posts on 2D water, outlines, dissolves |
+| [Freya Holmér](https://www.youtube.com/@acegikmo) | Math for shaders (SDFs, procedural geometry) | Free; essential for procedural shape generation |
+
+### Optional Owned Packages
+If you own these, they extend the built-in stack significantly — but the workflow does not require them for portability:
+
+| Package | What It Does | Owner Note |
+|---------|-------------|------------|
+| [Shapes (Freya Holmér)](https://assetstore.unity.com/packages/tools/particles-effects/shapes-173167) | Real-time vector graphics library — draw lines, arcs, circles, polygons in code | Paid; top-4 Unity paid asset 2023; add `has_shapes: true` to ProjectConfig if owned |
+| [True Shadow](https://assetstore.unity.com/packages/tools/gui/true-shadow-ui-soft-shadow-and-glow-205220) | Soft drop shadows + glow for uGUI/UI Toolkit | Paid; far superior to Unity's built-in shadow component; add `has_true_shadow: true` to ProjectConfig if owned |
+
+### Shader-First Game Feel
+Shaders are also valid **game feel tools** — not just visuals. See `.agent/skills/game-feel-integrator/references/shaders-as-feel.md` for:
+- Outline flash on hit
+- Dissolve on death / spawn
+- Chromatic aberration on damage
+- UV scroll on charged/powered state
+- Screen-space distortion on impact
 
 ---
 
@@ -89,6 +129,8 @@
 | [Leonardo.AI](https://leonardo.ai) | Game sprites, character sheets, tile sets | Free tier available; game-asset focused models |
 | [Stable Diffusion](https://stability.ai) | Any image generation | Open source; self-hostable via ComfyUI or Automatic1111 |
 | [Bing Image Creator](https://www.bing.com/images/create) | Quick concept art | Free; powered by DALL-E; good for rapid ideation |
+| [Fal.ai](https://fal.ai) | Fast AI image generation via MCP | Free tier + paid; SDXL/Flux models; MCP-connectable — Art Director can generate → Antigravity imports directly |
+| [Replicate](https://replicate.com) | Hosted ML models including image gen | Pay-per-run; MCP-connectable; good for batch texture generation |
 
 ### AI 3D Model Generation
 
@@ -155,6 +197,23 @@ Tools for managing your project, workflow, and team — not game assets, but ess
 | [GitHub Actions](https://github.com/features/actions) | Automated build + test pipelines | Free for public repos; Unity-compatible runners available |
 | [Unity Cloud Build](https://unity.com/products/unity-devops) | Cloud build for Unity projects | Managed service; paid |
 | [GameCI](https://game.ci) | Open-source Unity CI/CD for GitHub Actions | Free; recommended Unity CI setup |
+
+---
+
+## Visual Communication Tools
+
+> Use these to sketch, wireframe, or mockup **before** coding. The agent will suggest the right tool based on context — you don't need to choose upfront.
+
+| Context | Tool | Notes |
+|---------|------|-------|
+| **Feature behavior sketch** (how a mechanic flows, state diagram, input → output) | [Miro](https://miro.com) | Free tier; infinite canvas; great for system diagrams and feature flows |
+| **Quick offline sketch** | [Excalidraw](https://excalidraw.com) | Free, no account needed; hand-drawn feel; exports to PNG |
+| **UI screen mockup / screen flow** | [Pencil.dev](https://pencil.dev) | Free (requires Claude Code sub); design-on-canvas → exports HTML/CSS/React; not Unity-native but good for UI layout ideation |
+| **UI screen mockup (Figma)** | [Figma Community](https://www.figma.com/community) | Free tier; game UI kits available; better for pixel-accurate UI mockups |
+| **Preprod game overview** (all screens + connections) | [Miro](https://miro.com) | System diagram view; link to GDD sections |
+| **Icon sourcing** | [Iconify](https://iconify.design) | 200k+ icons; Figma plugin [UNVERIFIED: verify Pencil.dev plugin] |
+
+> **Agent behaviour**: In Step 2 of `/implement-feature`, if the feature involves new UI or a complex behavior flow, the agent will ask: *"Would a quick sketch help clarify this before we code? [Miro for system flow / Excalidraw for quick diagram / Pencil for UI layout]"* — answer with the tool name or 'no'.
 
 ---
 

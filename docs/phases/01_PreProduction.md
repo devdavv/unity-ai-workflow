@@ -34,6 +34,14 @@ The Architect agent guides the user through a comprehensive questionnaire.
 | Task management? | Linear / Jira / None | `task_management` |
 | MCP integrations? | Unity / GitHub / Linear | `mcp` |
 
+### 1b. Visual Game Overview (Optional but Recommended)
+After the questionnaire, offer the user a quick visual overview before any code is written:
+
+> *"Want to sketch a game overview before we start coding? A simple screen-flow diagram (all screens + how they connect) helps catch scope creep early and gives the AI a shared visual reference throughout production."*
+>
+> **Tool suggestion**: Miro (best for linking to GDD), Excalidraw (fastest, offline), or Figma Community (most accurate for UI screens).
+> **Output**: A rough screen-flow diagram saved as a link in `GDD.md → Overview`. Not required — skip if scope is small or well-defined.
+
 ### 2. ProjectConfig Completion
 Fill out `ProjectConfig.yaml` with all decisions.
 

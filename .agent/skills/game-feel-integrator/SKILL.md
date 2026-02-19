@@ -18,6 +18,10 @@ Every meaningful action needs feedback in **at least 3 channels**: Visual, Audio
 - **DOTween**: See [references/dotween.md](references/dotween.md)
 - **PrimeTween**: See [references/primetween.md](references/primetween.md)
 - **No middleware**: Use `async Awaitable` coroutines
+- **Shader effects as feel**: See [references/shaders-as-feel.md](references/shaders-as-feel.md) — outline flash, dissolve, chromatic aberration, UV scroll, distortion
+
+## Theory & Inspiration
+- **Game feel foundations + Loic Jacob methodology**: See [references/gamefeel-theory.md](references/gamefeel-theory.md)
 
 ## Universal Patterns (middleware-agnostic)
 
@@ -48,3 +52,4 @@ public struct ShakeProfile
 - Start **exaggerated**, then dial back.
 - Always check the GFD Feedback Matrix before implementing.
 - Ensure tweens are killed on object destruction.
+- **Sync ADSR across channels**: Attack and Release timings must match across Visual, Audio, and Kinesthetic. If the SFX fades over 0.5s, particles and shake damping must also fade over 0.5s.

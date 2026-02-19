@@ -44,6 +44,11 @@ Ask the user these questions. Don't skip them — answers shape implementation a
 > "Is this prototype/spike quality, or production-ready?"
 > *(Note: scope affects test coverage depth, not code standards — RULES.md always applies)*
 
+**Visual sketch (optional):**
+> If the feature involves new UI screens, a complex behavior flow, or a non-obvious state machine, offer:
+> *"Would a quick sketch help clarify this before we code? I can suggest the right tool: Miro for a system/flow diagram, Excalidraw for a quick diagram, or Pencil.dev for a UI layout mockup."*
+> Skip this offer for simple, single-script features. Reference `docs/ASSET_RESOURCES.md → Visual Communication Tools` for tool guidance.
+
 ---
 
 ### 3. Game Feel Questions (per-feature GFD pass)
@@ -69,14 +74,18 @@ Ask upfront. Don't defer. These answers update the GFD before a line of code is 
 ### 4. Asset Identification
 Based on game feel answers, identify what's needed before coding starts:
 
-- List each required asset: VFX particle, SFX clip, animation, material, etc.
+- List each required asset: VFX particle, SFX clip, animation, material, **shader effect**, sprite, texture, etc.
+  - **Shader effects** are first-class assets: outline flash, dissolve, chromatic aberration, UV scroll, distortion, glow. See `docs/ASSET_RESOURCES.md → Shaders & Procedural Graphics` and `game-feel-integrator/references/shaders-as-feel.md`
 - Reference `docs/ASSET_RESOURCES.md` for where to get them
 - In **automatic mode**: suggest specific sources and mark as placeholders if not yet acquired
 - In **mix/assistant mode**: ask the user which sources they prefer, or whether to use placeholders
 
 > Placeholder policy: if assets aren't ready, implement with placeholder (`SFX_placeholder`, white cube, default particle) and mark with `// ASSET: [description needed]`
 
-> **Knowledge freshness**: If any referenced asset, package, or tutorial may have updated since the AI's knowledge cutoff, prompt: *"Want to do a quick Perplexity or Google search to verify this is still the best option and check the current version?"*
+> **Knowledge freshness & verification**: For every asset, package, tutorial, or tool recommended in this step, mark it as `[VERIFIED: source]` (accessed this session) or `[UNVERIFIED: training data]`. For `[UNVERIFIED]` items, either:
+> - Query **Tavily MCP** inline (if connected) to confirm current version and status before proceeding, or
+> - Prompt: *"This recommendation is from training data. Want to do a quick Perplexity or web search to confirm it's current?"*
+> Never present unverified package versions or tool availability as fact.
 
 ---
 

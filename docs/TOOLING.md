@@ -111,3 +111,36 @@ For training in-game AI via reinforcement learning. Completely separate from the
 | Quick file edits | Cursor / Windsurf | Inline edits during sprints |
 | Debugging | Antigravity | MCP reads console; Claude Code for hard logic bugs |
 | Polish | Antigravity | Game feel integrator + Unity MCP |
+
+---
+
+## Claude Code Skills Ecosystem
+
+> **Note**: This section is most relevant when running the workflow in **Claude Code** (current primary tool: Antigravity). When the Claude Code workflow adaptation ships, these skills become first-class resources.
+
+Claude Code supports installable "skills" — reusable instruction sets that extend agent behavior. This workflow already uses its own skills in `.agent/skills/`. External skills supplement when a task falls outside the built-in scope.
+
+### Verified Unity-Relevant External Skills
+
+| Skill | Source | Purpose |
+|-------|--------|---------|
+| `unity-developer` | [fastmcp.me](https://fastmcp.me/Skills/Details/839/unity-developer) | Symbol-based code editing, scene manipulation, Unity MCP integration |
+| `game-developer-specialist` | [mcpmarket.com](https://mcpmarket.com/tools/skills/game-development-specialist) | Unity 6 LTS, URP/HDRP pipelines, cross-platform deployment |
+| TheOne Studio Unity skills | [github.com/The1Studio/theone-training-skills](https://github.com/The1Studio/theone-training-skills) | VContainer, SignalBus, UniTask, Data Controllers (training-enforced patterns) |
+
+> In-repo skills (`.agent/skills/`) take priority. External skills fill gaps. Check `skills.sh` [UNVERIFIED: rate-limited during research] for additional options.
+
+### Reference Repos
+These repos informed the design of this workflow — check them for workflow patterns and tool ideas:
+
+| Repo | Key Insight |
+|------|-------------|
+| [superpowers](https://github.com/obra/superpowers) | Composable skill format; design → plan → execute → QA phases |
+| [everything-claude-code](https://github.com/affaan-m/everything-claude-code) | 40+ skills, session lifecycle hooks, instinct-based learning patterns |
+| [GSD](https://github.com/gsd-build/get-shit-done) | STATE.md for session continuity; wave-based parallel execution |
+| [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) | Curated list; session restore tools (Recall, claude-code-tools) |
+| [ccpm](https://github.com/automazeio/ccpm) | GitHub Issues as task database when Linear isn't used |
+
+### Optional Advanced MCPs (Antigravity-compatible)
+For complex math validation: **Wolfram Alpha MCP** — useful when implementing physics systems (trajectories, procedural generation). Low priority for most features; connect on demand.
+For real-time Unity API lookup: **Tavily MCP** — see `MCP_SETUP.md`.

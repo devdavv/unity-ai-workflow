@@ -114,6 +114,8 @@ public class PlayerController : MonoBehaviour { ... }
 | **MCP Awareness** | Check if Unity MCP / GitHub MCP / Linear MCP are available. Use them when they would improve the workflow, but never assume they are connected — always verify first. |
 | **Error Recovery** | If a compilation error occurs, read the Unity console (via MCP if available) before attempting fixes. Never guess at errors. |
 | **Prompt Logging** | When `prompt_logging: true` in `ProjectConfig.yaml`, append an entry to `docs/PromptLog.md` after every response. Format: date/time, user's exact prompt, ≤200-word factual summary of what was done. See `AGENTS.md → Prompt Logging` for the full format. |
+| **Verification Marking** | When recommending any external tool, package, repository, tutorial, or statistic, mark it as `[VERIFIED: source]` (you accessed it in this session) or `[UNVERIFIED: training data — Perplexity/web check recommended]`. Never present unverified information as fact. If Tavily MCP is available, use it to verify before responding rather than relying on training data. |
+| **Context Window Hygiene** | After completing a full `/implement-feature` loop OR when the conversation has covered 3+ major decisions or multiple distinct topics, proactively offer: *"This session is getting long. Want me to write a session summary (SessionState) you can paste into a fresh window to continue without context loss?"* Use `templates/SessionState_Template.md` as the format. |
 
 ---
 
