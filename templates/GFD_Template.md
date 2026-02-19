@@ -28,9 +28,9 @@ status: "Draft"
 | Type | Tool | Notes |
 |------|------|-------|
 | Tweening | | DOTween / PrimeTween / Custom |
-| Feedback System | | FEEL / MMFeedbacks / Custom |
+| Feedback System | | DOTween / PrimeTween / Custom Code |
 | Audio | | FMOD / Wwise / Unity Audio |
-| Camera | | Cinemachine / Custom |
+| Camera | | Custom / Cinemachine (if needed) |
 
 ---
 

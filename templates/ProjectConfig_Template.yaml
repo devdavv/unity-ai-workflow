@@ -31,9 +31,9 @@ third_party: []
 # Game Feel Middleware
 feel_tools:
   tweening: "none"          # DOTween | PrimeTween | LeanTween | none
-  feedback_system: "Custom" # FEEL | MMFeedbacks | Custom | none
+  feedback_system: "Custom" # Custom | none (code-based via DOTween/PrimeTween)
   audio: "Unity"            # FMOD | Wwise | Unity
-  camera: "Cinemachine"     # Cinemachine | Custom
+  camera: "Custom"          # Custom | Cinemachine (opt-in if project needs it)
 
 # Visual Packages (optional owned assets — set true only if purchased/imported)
 visual_plugins:

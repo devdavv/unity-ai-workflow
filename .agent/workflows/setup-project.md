@@ -58,7 +58,7 @@ Use `unity-project-setup` skill:
 From `ProjectConfig.yaml → packages`:
 - Via Unity MCP `manage_packages` if available.
 - Otherwise, provide manifest.json entries for manual install.
-- **Recommend essential packages** based on project type (e.g., 2D Sprite, TextMeshPro, Cinemachine).
+- **Recommend essential packages** based on project type (e.g., 2D Sprite, TextMeshPro).
 - **Install third-party** from `ProjectConfig.yaml → third_party` (e.g., DOTween).
 
 ### 4. Configure Editor Settings

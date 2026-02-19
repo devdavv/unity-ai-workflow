@@ -25,7 +25,9 @@ Advancing the repository from a foundation to a complete, opinionated workflow s
 - [x] AI Generation Tools section — `docs/ASSET_RESOURCES.md` (Midjourney, Meshy, ElevenLabs, Suno, Fal.ai, Replicate, Iconify)
 - [x] Phase 4 Production rewritten around the feature loop
 - [x] `/setup-project` now includes dev mode selection + automatic mode onboarding Q&A
-- [x] README rewritten to lead with dev modes and integrated game feel philosophy
+- [x] README rewritten to lead with dev modes and integrated game feel philosophy + resources/credits section
+- [x] Removed FEEL/MMFeedbacks as default — not AI-friendly; DOTween/PrimeTween + custom code is the approach
+- [x] Cinemachine de-defaulted — opt-in only, custom camera as default
 - [x] TCREI prompting methodology + `/code-review` skill + prompt logging — `AGENTS.md`, `RULES.md`
 - [x] Verification marking system (`[VERIFIED]` / `[SYNTHESIZED]` / `[UNVERIFIED]`) — `RULES.md`, `implement-feature.md`
 - [x] Game feel theory & shader references — `game-feel-integrator/references/` (ADSR envelope, Three Pillars, shaders-as-feel)
@@ -42,6 +44,7 @@ Advancing the repository from a foundation to a complete, opinionated workflow s
 
 - [ ] Claude Code support (`.claude/skills/`, CLAUDE.md, system prompt integration)
 - [ ] Cursor support (`.cursor/rules/`, `.mdc` format conversion)
+- [ ] Hybrid workflow support — Antigravity + Claude Code working together via file-based shared state (SessionState, ProjectConfig, GDD/TDD/GFD as the "shared brain")
 - [ ] Comprehensive sample project walkthrough using automatic mode (a complete game end-to-end)
 - [ ] Community feedback integration
 - [ ] `skill-creator` skill for generating new Unity-specific skills from within the workflow
@@ -50,7 +53,14 @@ Advancing the repository from a foundation to a complete, opinionated workflow s
 
 ## 🔭 Future / Side Projects
 
-Tools for generating game assets with AI — potentially separate tooling or a skill:
+### Documentation Website
+- Interactive examples showing prompt → result for each workflow
+- Setup walkthroughs with screenshots/video
+- Project showcase: real games built with this workflow + the prompts used
+- Side-by-side comparison: Claude Code vs Antigravity vs hybrid usage
+- Best practices for token optimization across AI tools
+
+### AI Asset Generation Pipelines
 - Sprite generation pipeline (Stable Diffusion → Unity import)
 - SFX generation pipeline (ElevenLabs Sound FX → AudioClip)
 - 3D model pipeline (Meshy → FBX import → Unity materials)

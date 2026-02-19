@@ -238,7 +238,7 @@ Tools for managing your project, workflow, and team — not game assets, but ess
 | [VContainer](https://vcontainer.hadashikick.jp) | Dependency injection | Free; lightweight, high-performance |
 | [Reflex](https://github.com/gustavopsantos/Reflex) | Dependency injection | Free (MIT); fastest DI for Unity; minimal API |
 | [Init(args)](https://assetstore.unity.com/packages/tools/utilities/init-args-200530) | DI + MonoBehaviour initialization | Paid; integrates with Unity's component model natively |
-| [Feel (More Mountains)](https://feel.moremountains.com) | Game feel feedback system | Paid; best-in-class for juice; see `game-feel-integrator` skill |
+| ~~Feel (More Mountains)~~ | ~~Game feel feedback system~~ | Removed — editor-heavy, not AI-friendly; use DOTween/PrimeTween + custom code instead |
 
 ### Utilities
 | Package | Purpose | Notes |
