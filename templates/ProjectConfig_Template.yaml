@@ -35,6 +35,11 @@ feel_tools:
   audio: "Unity"            # FMOD | Wwise | Unity
   camera: "Cinemachine"     # Cinemachine | Custom
 
+# Visual Packages (optional owned assets — set true only if purchased/imported)
+visual_plugins:
+  has_shapes: false         # Freya Holmér's Shapes — procedural vector drawing in code
+  has_true_shadow: false    # True Shadow — soft UI drop shadows for UI Toolkit / UGUI
+
 # MCP Integrations
 # Ask user during /setup-project which MCPs they have configured.
 # Enable only what is available — never assume they are connected.

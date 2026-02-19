@@ -22,10 +22,17 @@ Advancing the repository from a foundation to a complete, opinionated workflow s
 
 - [x] Three Dev Modes (Assistant / Mix / Automatic) — `ProjectConfig.yaml`, `RULES.md`, `AGENTS.md`
 - [x] `/implement-feature` workflow — unified feature loop with game feel integrated per-feature
-- [x] AI Generation Tools section — `docs/ASSET_RESOURCES.md` (Midjourney, Meshy, ElevenLabs, Suno, etc.)
+- [x] AI Generation Tools section — `docs/ASSET_RESOURCES.md` (Midjourney, Meshy, ElevenLabs, Suno, Fal.ai, Replicate, Iconify)
 - [x] Phase 4 Production rewritten around the feature loop
 - [x] `/setup-project` now includes dev mode selection + automatic mode onboarding Q&A
 - [x] README rewritten to lead with dev modes and integrated game feel philosophy
+- [x] TCREI prompting methodology + `/code-review` skill + prompt logging — `AGENTS.md`, `RULES.md`
+- [x] Verification marking system (`[VERIFIED]` / `[SYNTHESIZED]` / `[UNVERIFIED]`) — `RULES.md`, `implement-feature.md`
+- [x] Game feel theory & shader references — `game-feel-integrator/references/` (ADSR envelope, Three Pillars, shaders-as-feel)
+- [x] Visual Communication Tools + Shaders & Procedural Graphics — `docs/ASSET_RESOURCES.md`
+- [x] MCP setup enriched (Tavily, claude-mem) — `docs/MCP_SETUP.md`
+- [x] Claude Code Skills Ecosystem section — `docs/TOOLING.md`
+- [x] SessionState handoff template — `templates/SessionState_Template.md`
 - [ ] Validate all skill descriptions follow Anthropic skill-creator trigger format
 - [ ] Phase 5 Polish guide — update to clarify role as "final tuning" not "first-time polish"
 

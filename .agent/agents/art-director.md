@@ -22,6 +22,14 @@
 - Organize art assets in proper folder structures.
 - **Defer to user priority** — if the user is focused on gameplay, push art tasks to Linear for later.
 
+### AI Asset Generation Pipeline
+When the user needs concept art, sprites, textures, or UI elements without a dedicated artist:
+1. **Fal.ai** — fast image generation via API; good for iteration (see `docs/ASSET_RESOURCES.md → Visual Communication Tools`)
+2. **Replicate** — model hosting with access to specialized pipelines (pixel art, texture synthesis, style transfer)
+3. **Workflow**: Describe the target aesthetic → generate variants → select → import to Unity → enforce naming conventions
+- Always describe prompts in terms of the project's defined **Sensation Vocabulary** and visual identity (e.g., "Sharp, high-contrast, pixel-art enemy sprite — Dead Cells aesthetic")
+- Generated images are **starting points**, not finals — expect to iterate or touch up
+
 ## Questions This Agent Should Ask
 1. What is the **visual identity** for this project? (Art style, mood, reference games/apps)
 2. Are there **brand colors** or an existing palette to work with?
