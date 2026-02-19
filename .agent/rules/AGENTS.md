@@ -20,6 +20,7 @@
 | **Polish / Game Feel** | `GFD` | Game Designer | `game-feel-integrator` |
 | **Art / Scene Setup** | `GFD`, `TDD` | Art Director | — (Unity MCP tools) |
 | **Project Setup** | `ProjectConfig`, `TDD` | Architect | `unity-project-setup` |
+| **Code Review / Pre-commit check** | `RULES`, `GDD`, `TDD` | QA Tester | `code-review` |
 
 ---
 
@@ -41,6 +42,22 @@ Before loading any context, tell the user what you're about to do:
   Proceed? (or type a different approach)
 ```
 
+### Step 2.5: Prompt Quality Check
+Before loading context, evaluate the quality of the user's input. If the request lacks **Task clarity**, **Context**, or **References**, apply **TCREI** to close the gaps — ask the user for the missing components before proceeding.
+
+> **TCREI quick-reference:**
+> - **T** — Task: What exactly needs to be done?
+> - **C** — Context: Background, constraints, current state.
+> - **R** — References: Examples, games, repos, prior art.
+> - **E** — Evaluate: After first response, what's right/wrong/missing?
+> - **I** — Iterate: Refine from there.
+
+If a first-pass response still misses the mark, apply **RSTI** internally before responding again:
+- **R** — Revisit: Is there missing context or better examples to add?
+- **S** — Separate: Break the prompt into shorter, cleaner bullet points.
+- **T** — Try different phrasing: Reframe the goal entirely.
+- **I** — Introduce constraints: Add specific limits to force a sharper answer.
+
 ### Step 3: Load
 Read the indicated template files from the project's `docs/` folder (the filled-in versions, not the pristine templates). Read the agent persona file from `.agent/agents/`. Read the skill instructions from `.agent/skills/`.
 
@@ -61,6 +78,7 @@ If the task maps to a workflow command, suggest it:
 - After implementation → suggest `/test`
 - Bug or unexpected behavior → suggest `/debug`
 - Feature works but feels "dry" → suggest `/polish`
+- Code written, tests passing → suggest `/review`
 
 ---
 
@@ -76,6 +94,16 @@ Agents should leverage MCP tools when they would improve the task:
 | **Notion MCP** | Documentation sync | Update design docs, meeting notes |
 
 > **Always check** if an MCP is connected before attempting to use its tools. If not connected, fall back to file-based operations and inform the user of what they're missing.
+
+---
+
+## Knowledge Freshness
+
+AI knowledge has a cutoff date. When the user references Unity packages, third-party tools, pricing, or any external resource that may have changed, add a short note before recommending specifics:
+
+> *"My knowledge has a cutoff — for current versions, pricing, or availability, a quick [Perplexity](https://perplexity.ai) or Google search will give you fresher data."*
+
+Always suggest this **before** recommending a specific package version or paid tool.
 
 ---
 
@@ -99,3 +127,19 @@ Some tasks span multiple domains. In that case:
 
 **How to suggest**: Simply mention it:
 > "I noticed we've done this pattern twice now. Want me to create a new skill for it using `/skill-creator`?"
+
+---
+
+## Prompt Logging
+
+### Step 6: Log (if `prompt_logging: true`)
+After completing every response, check `ProjectConfig.yaml → prompt_logging`. If `true`, append an entry to `docs/PromptLog.md`:
+
+```markdown
+## [YYYY-MM-DD HH:MM] — <Workflow or Task Type>
+**Prompt:** <user's exact words>
+**Summary:** <≤200 word factual summary — what was decided, created, or changed>
+---
+```
+
+Keep summaries factual and concise: what was decided, what files were changed, what was implemented. If `docs/PromptLog.md` does not exist, create it with the standard header first (see Phase 3 setup).

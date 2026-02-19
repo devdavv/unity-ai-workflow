@@ -113,6 +113,7 @@ public class PlayerController : MonoBehaviour { ... }
 | **Workflow Proactivity** | When a task aligns with a known workflow (`/brainstorm`, `/plan`, `/create`, `/test`, `/debug`, `/polish`, `/setup-project`), **proactively suggest** it. Don't wait to be asked. |
 | **MCP Awareness** | Check if Unity MCP / GitHub MCP / Linear MCP are available. Use them when they would improve the workflow, but never assume they are connected — always verify first. |
 | **Error Recovery** | If a compilation error occurs, read the Unity console (via MCP if available) before attempting fixes. Never guess at errors. |
+| **Prompt Logging** | When `prompt_logging: true` in `ProjectConfig.yaml`, append an entry to `docs/PromptLog.md` after every response. Format: date/time, user's exact prompt, ≤200-word factual summary of what was done. See `AGENTS.md → Prompt Logging` for the full format. |
 
 ---
 

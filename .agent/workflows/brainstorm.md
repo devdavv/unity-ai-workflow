@@ -12,7 +12,16 @@ Transform a rough game idea into structured design document sections.
 ## Steps
 
 ### 1. Understand the Vision
-Ask the user:
+Present this to the user before they answer — it helps you get better input:
+
+> **To get the most out of this session, structure your answer using TCREI:**
+> - **T** — Task: What exactly do you want this game to do?
+> - **C** — Context: Genre, platform, target audience, mood, tone.
+> - **R** — References: 2–3 games that inspire this. What specifically do you like about each?
+> - **E** — Evaluate: After my first response, tell me what's right, wrong, or missing.
+> - **I** — Iterate: We'll refine from there — no answer needs to be perfect on the first try.
+
+Then ask the user:
 - What is the **one-sentence pitch** for this game?
 - What is the **core fantasy** — what does the player *feel*?
 - Name **3 reference games** that capture elements of what you want.

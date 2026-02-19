@@ -56,6 +56,7 @@ documentation: "Markdown" # Notion | Confluence | Markdown | None
 ai_mode: "mix"
 auto_confirm: false       # Skip confirmation prompts (overridden by ai_mode: automatic)
 prototype_mode: false     # See RULES.md Section 7 for exact relaxation table
+prompt_logging: true      # Append every prompt + ≤200-word AI summary to docs/PromptLog.md
 
 # Rule Overrides (uncomment to enable)
 # rule_overrides:

@@ -9,7 +9,16 @@ Make all technical and design decisions before writing any code.
 ## Activities
 
 ### 1. Pre-Production Questionnaire
-The Architect agent guides the user through a comprehensive questionnaire:
+The Architect agent guides the user through a comprehensive questionnaire.
+
+> **Tip — Better input = better output**: For any open-ended decision (vision, player fantasy, reference games), use **TCREI** when prompting the AI:
+> - **T** — Task: What exactly do you need decided?
+> - **C** — Context: Current constraints, platform, team size, prior decisions.
+> - **R** — References: Examples, games, tools that inspired you.
+> - **E** — Evaluate: After the AI's first answer, tell it what's right/wrong/missing.
+> - **I** — Iterate: Refine until it matches your vision.
+>
+> If results are still off after one round, apply **RSTI**: break your prompt into bullet points, rephrase the goal, or add a hard constraint (e.g. "answer in 3 options only").
 
 | Question | Decision | ProjectConfig Field |
 |----------|----------|-------------------|

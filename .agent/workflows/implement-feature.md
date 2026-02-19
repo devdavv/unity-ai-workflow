@@ -76,6 +76,8 @@ Based on game feel answers, identify what's needed before coding starts:
 
 > Placeholder policy: if assets aren't ready, implement with placeholder (`SFX_placeholder`, white cube, default particle) and mark with `// ASSET: [description needed]`
 
+> **Knowledge freshness**: If any referenced asset, package, or tutorial may have updated since the AI's knowledge cutoff, prompt: *"Want to do a quick Perplexity or Google search to verify this is still the best option and check the current version?"*
+
 ---
 
 ### 5. Update GDD + GFD (before coding)
@@ -126,6 +128,18 @@ Use `game-feel-integrator` skill, referencing the GFD row from Step 5:
 
 ---
 
+### 8.5. Code Review
+Run the `code-review` skill on all new/modified files before committing.
+
+- In **automatic** mode: run review automatically and fix any flagged issues.
+- In **mix/assistant** mode: ask *"Run a quick code review before committing?"*
+
+The review checks RULES.md compliance, naming conventions, performance anti-patterns, architecture, test coverage against Gherkin scenarios, and game feel TODO status.
+
+**Do not commit until all issues from the review are resolved.**
+
+---
+
 ### 9. Commit
 Commit the complete feature:
 ```
@@ -138,6 +152,8 @@ style({feature}): add game feel (vfx, sfx, camera)
 ```
 Branch: `feature/{feature-name}`
 
+If `prompt_logging: true` in `ProjectConfig.yaml`, also append a log entry to `docs/PromptLog.md` (or stage it in the same commit as `chore(log): log implement-feature session`).
+
 ---
 
 ### 10. Output Checklist
@@ -148,6 +164,8 @@ Branch: `feature/{feature-name}`
 ✅ GFD Feedback Matrix row filled (or pending row filed)
 ✅ Assets identified (acquired or marked as placeholder)
 ✅ Tests written and passing
+✅ Code review passed (code-review skill)
 ✅ Game feel integrated (or TODO filed)
 ✅ Committed on feature branch
+✅ PromptLog.md updated (if prompt_logging: true)
 ```

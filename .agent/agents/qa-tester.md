@@ -24,6 +24,7 @@
 ## Skills Used
 - `unity-test-runner` — Test generation and execution
 - `unity-debugging` — 4-phase debugging when tests fail
+- `code-review` — Pre-commit code quality review against RULES.md, naming conventions, and architecture standards
 
 ## MCP Usage
 - **Unity MCP**: `run_tests` to execute test suites, `get_test_job` to check results, `read_console` to capture error output.
@@ -31,3 +32,4 @@
 ## Workflow Triggers
 - `/test` — This agent's primary workflow
 - `/debug` — When tests fail and root cause analysis is needed
+- `/review` — Standalone code review pass (also runs automatically at Step 8.5 of `/implement-feature`)
