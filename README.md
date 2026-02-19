@@ -1,6 +1,6 @@
 # Unity AI Workflow
 
-A comprehensive, agent-first toolkit for AI-assisted Unity development. Designed primarily for **Google Antigravity IDE**, this repository provides the "brain" (rules, agents, skills, and workflows) to turn your AI assistant into an expert Unity team.
+A comprehensive, agent-first toolkit for AI-assisted Unity development. Works with **Claude Code** (primary) and **Google Antigravity IDE**. This repository provides the "brain" (rules, agents, skills, and workflows) to turn your AI assistant into an expert Unity team.
 
 > **No Unity project inside** — this repo is pure workflow infrastructure (rules, agents, skills, docs, templates). You copy it into your game's workspace and the AI reads it as its operating manual.
 
@@ -35,15 +35,17 @@ The AI asks about VFX, SFX, camera reactions, and haptics **before writing a sin
 ## 📂 Recommended Workspace Structure
 
 > [!IMPORTANT]
-> **Don't open the Unity project directly** in Antigravity. Instead, create a **parent workspace folder** containing both your Unity project and docs. This lets the AI read design documents, templates, AND Unity code simultaneously.
+> **Don't open the Unity project directly.** Instead, create a **parent workspace folder** containing both your Unity project and docs. This lets the AI read design documents, templates, AND Unity code simultaneously.
 
 ```
-MyGame/                          ← Open THIS folder in Antigravity
-├── .agent/                      ← AI brain (copied from this repo)
+MyGame/                          ← Open THIS folder in your AI tool
+├── CLAUDE.md                    ← Claude Code instructions (auto-loaded)
+├── .claude/commands/            ← Slash commands (Claude Code)
+├── .agent/                      ← AI brain (Antigravity + shared skills)
 │   ├── rules/
 │   ├── agents/
-│   ├── skills/
-│   └── workflows/
+│   ├── skills/                  ← Shared knowledge base (both tools)
+│   └── workflows/               ← Antigravity workflows
 ├── docs/                        ← Living documents (filled during pre-prod)
 │   ├── ProjectConfig.yaml
 │   ├── GDD.md
@@ -61,25 +63,34 @@ MyGame/                          ← Open THIS folder in Antigravity
 
 ## 🚀 Quick Start
 
+### With Claude Code
+
 1. **Create your workspace**: Create a parent folder for your game (e.g. `MyGame/`).
-2. **Copy the toolkit**: Copy all three folders from this repo into your workspace root:
-   - `.agent/` — The AI brain (rules, agents, skills, workflows)
-   - `templates/` — Pristine document starters
-   - `docs/` — Reference documentation and phase guides
+2. **Copy the toolkit**: Copy everything from this repo into your workspace root.
 3. **Create your Unity project**: Inside the workspace via Unity Hub (e.g. `MyGame/MyGameUnity/`).
-4. **Open the workspace**: Open the **parent folder** (not the Unity folder) in Antigravity.
-5. **Run `/setup-project`**: The AI will ask your dev mode preference and walk you through full setup.
-6. **Connect MCPs** (Agent panel > ... > MCP Servers):
+4. **Open the workspace** in your terminal or VS Code with Claude Code.
+5. `CLAUDE.md` is **auto-loaded** — rules, routing, and workflow suggestions are built in.
+6. **Run `/setup-project`**: The AI walks you through dev mode selection and full project initialization.
+
+### With Antigravity
+
+1. **Create your workspace** and **copy the toolkit** (same as above).
+2. **Create your Unity project** inside the workspace via Unity Hub.
+3. **Open the parent folder** (not the Unity folder) in Antigravity.
+4. **Run `/setup-project`**: Same workflow, powered by `.agent/workflows/`.
+5. **Connect MCPs** (Agent panel > ... > MCP Servers):
    - **Unity MCP**: For in-editor scene/prefab/asset management
    - **GitHub MCP**: For automated git operations
    - **Linear/Notion MCP**: For task and doc syncing
+
+> Both tools share the same skills (`.agent/skills/`), docs, and templates. You can switch between them freely.
 
 ---
 
 ## 🧠 How it Works
 
-- **Global Constitution**: `RULES.md` enforces Unity 6.2+ best practices, performance standards, and thread safety.
-- **Auto-Routing**: `AGENTS.md` automatically loads the right agent personas and skills based on your task and `ai_mode`.
+- **Global Constitution**: `CLAUDE.md` (Claude Code) and `RULES.md` (Antigravity) enforce Unity 6.2+ best practices, performance standards, and thread safety.
+- **Auto-Routing**: Agent routing table automatically loads the right personas and skills based on your task and `ai_mode`.
 - **TCREI Prompting**: Agents use the Task-Context-References-Evaluate-Iterate methodology for structured, high-quality outputs.
 - **Verification System**: Every AI recommendation is marked `[VERIFIED]`, `[SYNTHESIZED]`, or `[UNVERIFIED]` — no silent hallucinations.
 - **Expert Skills**: Dedicated skills for UI Toolkit data binding, ScriptableObject architecture, Netcode, game feel, testing, debugging, and more.

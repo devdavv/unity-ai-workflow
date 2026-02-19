@@ -16,7 +16,7 @@ All core infrastructure is built and working:
 
 ---
 
-## 🔧 v0.5: Vision Alignment (Current)
+## ✅ v0.5: Vision Alignment (Complete)
 
 Advancing the repository from a foundation to a complete, opinionated workflow system:
 
@@ -35,18 +35,18 @@ Advancing the repository from a foundation to a complete, opinionated workflow s
 - [x] MCP setup enriched (Tavily, claude-mem) — `docs/MCP_SETUP.md`
 - [x] Claude Code Skills Ecosystem section — `docs/TOOLING.md`
 - [x] SessionState handoff template — `templates/SessionState_Template.md`
-- [ ] Validate all skill descriptions follow Anthropic skill-creator trigger format
-- [ ] Phase 5 Polish guide — update to clarify role as "final tuning" not "first-time polish"
+- [x] Skill descriptions validated against Anthropic skill-creator trigger format
+- [x] Phase 5 Polish guide clarified as "final tuning" not "first-time polish"
 
 ---
 
-## 🚀 v1.0: Public Release & Multi-IDE Support
+## 🔧 v1.0: Public Release & Multi-IDE Support (Current)
 
-- [ ] Claude Code support (`.claude/skills/`, CLAUDE.md, system prompt integration)
+- [x] Claude Code support — `CLAUDE.md` (auto-loaded instructions), `.claude/commands/` (9 slash commands), dual-native architecture
+- [x] Hybrid workflow support — Claude Code + Antigravity sharing `.agent/skills/`, docs, and templates as common brain
 - [ ] Cursor support (`.cursor/rules/`, `.mdc` format conversion)
-- [ ] Hybrid workflow support — Antigravity + Claude Code working together via file-based shared state (SessionState, ProjectConfig, GDD/TDD/GFD as the "shared brain")
 - [ ] Comprehensive sample project walkthrough using automatic mode (a complete game end-to-end)
-- [ ] Community feedback integration
+- [ ] Community feedback integration (CONTRIBUTING.md, issue templates)
 - [ ] `skill-creator` skill for generating new Unity-specific skills from within the workflow
 
 ---

@@ -6,7 +6,7 @@
 
 ## Goal
 
-Final tuning, art integration, and performance profiling. Game feel was integrated per-feature during Phase 4 — Phase 5 is about raising the ceiling, not building the floor.
+Final tuning, art integration, and performance profiling. Game feel was integrated per-feature during Phase 4 — Phase 5 is about raising the ceiling, not building the floor. This is not "first-time polish" — every feature already has feel from `/implement-feature`. Phase 5 is the final pass: resolve deferred TODOs, tune values after extended playtesting, swap placeholder art, and hit performance targets.
 
 If any features have deferred `TODO(gamefeel):` comments, this phase resolves them first.
 

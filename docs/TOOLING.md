@@ -116,9 +116,7 @@ For training in-game AI via reinforcement learning. Completely separate from the
 
 ## Claude Code Skills Ecosystem
 
-> **Note**: This section is most relevant when running the workflow in **Claude Code** (current primary tool: Antigravity). When the Claude Code workflow adaptation ships, these skills become first-class resources.
-
-Claude Code supports installable "skills" — reusable instruction sets that extend agent behavior. This workflow already uses its own skills in `.agent/skills/`. External skills supplement when a task falls outside the built-in scope.
+Claude Code is now a **first-class supported tool** for this workflow. The repo includes `CLAUDE.md` (auto-loaded instructions) and `.claude/commands/` (9 slash commands). In-repo skills live in `.agent/skills/` and are shared between Claude Code and Antigravity. External skills supplement when a task falls outside the built-in scope.
 
 ### Verified Unity-Relevant External Skills
 
@@ -141,6 +139,6 @@ These repos informed the design of this workflow — check them for workflow pat
 | [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) | Curated list; session restore tools (Recall, claude-code-tools) |
 | [ccpm](https://github.com/automazeio/ccpm) | GitHub Issues as task database when Linear isn't used |
 
-### Optional Advanced MCPs (Antigravity-compatible)
+### Optional Advanced MCPs
 For complex math validation: **Wolfram Alpha MCP** — useful when implementing physics systems (trajectories, procedural generation). Low priority for most features; connect on demand.
 For real-time Unity API lookup: **Tavily MCP** — see `MCP_SETUP.md`.
