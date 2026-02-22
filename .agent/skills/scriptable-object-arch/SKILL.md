@@ -56,3 +56,13 @@ public class RuntimeSet<T> : ScriptableObject
 - Always use `[SerializeField] private` + public read-only properties.
 - Use `Action`/`Action<T>` delegates, not UnityEvents (better performance).
 - Runtime sets **must** clear on `OnDisable()`.
+
+## When to Consider DI Instead
+
+If your project needs any of these, check `ProjectConfig.yaml → architecture_pattern` and consider switching to `di-first` with the `dependency-injection` skill:
+- Cross-feature orchestration beyond simple events (Command pattern)
+- Constructor injection for testability with mock services
+- Scoped lifetimes (per-scene, per-level services)
+- Factory patterns with automatic dependency resolution
+
+**DI + SO coexist**: In DI-first projects, ScriptableObjects still hold data — they're injected into the container as instances. Events are replaced by Commands.

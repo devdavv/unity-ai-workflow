@@ -45,7 +45,18 @@ From `ProjectConfig.yaml → packages`, install via Unity MCP `manage_packages` 
 ⬜ Linear MCP — Not configured
 ```
 
+## Asset Loading Strategy
+
+| Approach | When to Use |
+|----------|-------------|
+| **Direct references** | Prefabs/SOs referenced in Inspector — always loads with scene |
+| **Resources/** | Prototype only. Loads synchronously. Everything in Resources/ ships in build. |
+| **Addressables** | Production default. Async loading, memory management, optional remote hosting. Install `com.unity.addressables`. |
+| **AssetBundles** | Advanced/custom CDN pipelines. Addressables wraps this — prefer Addressables unless you need low-level control. |
+
+For persistent data: encrypt PlayerPrefs values at minimum. For production, prefer server-side storage with authentication.
+
 ## Rules
 - **Never** create folders inside `Assets/` without `_Project/` prefix.
 - Use `unity-feature-scaffold` for feature modules.
-- Use `Resources/` sparingly — prefer Addressables.
+- Use `Resources/` sparingly — prefer Addressables for production.

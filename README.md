@@ -158,6 +158,7 @@ This workflow was built with the help of these resources. Ratings reflect how mu
 
 | Video | Creator | Rating | Influence |
 |-------|---------|--------|-----------|
+| [Advanced Project - Simple Game (Unity)](https://www.youtube.com/watch?v=AOdr6Q7ABFU) | PracticAPI | ⭐⭐⭐⭐⭐ | Production-quality Unity 6 architecture — SEP, MVC+Commands, DI, state machines, pooling, Addressables. Directly influenced DI skill and class taxonomy |
 | [Essential AI Skills For 2026](https://youtu.be/jm2jBW462bU) | Tina Huang | ⭐⭐⭐⭐⭐ | Introduced TCREI methodology and key tools we implemented |
 | [You're Using Claude Code Wrong — 10 Tips](https://youtu.be/V9atNrDjnZs) | Simon Scrapes \| AI Automation | ⭐⭐⭐⭐½ | Inspired the verification/hallucination-checking system |
 | [How I Use Claude Code (Meta Staff Engineer Tips)](https://youtu.be/mZzhfPle9QU) | John Kim | ⭐⭐⭐½ | Helpful Claude Code usage patterns |
@@ -167,6 +168,7 @@ This workflow was built with the help of these resources. Ratings reflect how mu
 
 | Resource | Rating | Influence |
 |----------|--------|-----------|
+| [PracticAPI — The Perfect Unity Project](https://www.patreon.com/posts/perfect-unity-132380321) | ⭐⭐⭐⭐⭐ | Reference architecture for production Unity 6 — MVC, Commands, DI, state machines, 14 documented techniques |
 | [Unity — Organizing Your Project](https://unity.com/how-to/organizing-your-project) | ⭐⭐⭐⭐⭐ | Official guidance — directly shaped recommended folder structure |
 | [TCREI Prompt Engineering Framework](https://medium.com/@datasciencedisciple/2-prompt-engineering-frameworks-to-become-top-2-ai-user-b366b0e7367a) | ⭐⭐⭐⭐⭐ | TCREI methodology is baked into AGENTS.md |
 | [Loic Jacob — Game Feel Theory](https://loicjacob.notion.site/generate-strong-and-consistent-sensations-in-the-gameplay) | ⭐⭐⭐⭐⭐ | ADSR envelope, Three Pillars, Sensation Vocabulary |

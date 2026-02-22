@@ -10,11 +10,15 @@ target_platforms: []
 unity_version: "6.2.0f1"
 render_pipeline: "URP"            # URP | HDRP | Built-in
 scripting_backend: "IL2CPP"       # IL2CPP | Mono
-ui_system: "UIToolkit"            # UIToolkit | UGUI | Mixed
+ui_system: "UIToolkit"            # UIToolkit | UGUI | Mixed (hybrid: UI Toolkit menus + uGUI HUD is valid)
 folder_strategy: "feature-based"  # feature-based | type-based
 networking: "none"                # none | NGO | Mirror | Photon | Custom
 async_pattern: "Awaitable"       # Awaitable | UniTask | Coroutines
 use_ecs_dots: false
+
+# Architecture
+architecture_pattern: "so-first"  # so-first (ScriptableObject events/data) | di-first (DI container + MVC + Commands)
+di_framework: "reflex"            # reflex | none (only relevant when architecture_pattern is di-first)
 
 # Packages (name: version)
 packages:

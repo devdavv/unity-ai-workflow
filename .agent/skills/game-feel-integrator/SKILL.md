@@ -48,6 +48,38 @@ public struct ShakeProfile
 }
 ```
 
+## Object Pooling
+
+Frequently spawned FX (particles, floating text, projectiles) must be pooled to avoid GC spikes:
+
+```csharp
+public class FXPool<T> where T : MonoBehaviour
+{
+    private readonly Queue<T> _pool = new();
+    private readonly T _prefab;
+    private readonly Transform _parent;
+
+    public T Get() {
+        var item = _pool.Count > 0 ? _pool.Dequeue() : Object.Instantiate(_prefab, _parent);
+        item.gameObject.SetActive(true);
+        return item;
+    }
+
+    public void Return(T item) {
+        item.gameObject.SetActive(false);
+        _pool.Enqueue(item);
+    }
+}
+```
+
+**Rules:** Pool all particles, floating text, projectiles. Return to pool on `OnParticleSystemStopped` or after tween completes. Pre-warm pools during scene load.
+
+## Performance Tips
+- **Camera separation**: Use separate world + UI cameras so post-processing doesn't affect UI
+- **Shaders over CPU animations**: For simple repetitive motion (scrolling, pulsing), prefer shader-based animation — runs parallel on GPU, cheaper than DOTween
+- **Shared materials enable batching**: Use material property blocks to vary parameters without breaking draw call batching
+- **Legacy Animation for simple UI**: For simple UI animations (fade, slide), Legacy Animation clips are more performant than Animator controllers
+
 ## Tuning
 - Start **exaggerated**, then dial back.
 - Always check the GFD Feedback Matrix before implementing.

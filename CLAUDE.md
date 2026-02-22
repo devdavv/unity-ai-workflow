@@ -16,7 +16,7 @@ MyGame/                          ← Open this folder
 ├── .claude/commands/            ← Slash commands (/implement-feature, /brainstorm, etc.)
 ├── .agent/
 │   ├── agents/                  ← 8 agent personas
-│   ├── skills/                  ← 11 reusable skills with references
+│   ├── skills/                  ← 13 reusable skills with references
 │   └── rules/                   ← RULES.md + AGENTS.md (Antigravity format)
 ├── docs/                        ← Living project docs
 │   ├── ProjectConfig.yaml       ← Project settings (ai_mode, packages, versions)
@@ -51,7 +51,7 @@ MyGame/                          ← Open this folder
 - **URP** render pipeline (override: `ProjectConfig.yaml → render_pipeline`)
 - **IL2CPP** scripting backend
 - **New Input System only** — never `Input.GetKey*`, `Input.GetAxis*`
-- **UI Toolkit** default (override: `ProjectConfig.yaml → ui_system`)
+- **UI Toolkit** recommended (override: `ProjectConfig.yaml → ui_system`). uGUI is also supported — especially for animated game HUDs and rapid prototyping. Hybrid (UI Toolkit menus + uGUI HUD) is valid.
 - **Awaitable** for async (Unity 6 native)
 - **Visual Scripting forbidden** for logic. Shader Graph & VFX Graph are fine.
 
@@ -101,6 +101,8 @@ Before starting work, classify the task and load the appropriate context:
 |-----------|--------------|----------------|
 | Ideation / Brainstorming | Game Designer | — |
 | Architecture / Structure | Architect | `unity-feature-scaffold` |
+| DI / Dependency Injection Setup | Architect | `dependency-injection` |
+| State Machines / Game Flow | Architect + Gameplay Dev | `state-machine` |
 | Gameplay Logic / Systems | Gameplay Dev + Game Designer | `scriptable-object-arch`, `game-feel-integrator` |
 | Editor Tools / Inspectors | Tool Developer | `unity-editor-tools` |
 | User Interface | UI Specialist | `ui-toolkit-binder` |

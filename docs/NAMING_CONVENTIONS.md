@@ -12,6 +12,7 @@
 | **Method** | PascalCase, verb | `TakeDamage()` |
 | **Property** | PascalCase | `MaxHealth` |
 | **Public field** | PascalCase (avoid — use properties) | `Health` |
+| **Internal member** | Same as public (PascalCase) | `ResolveService()` |
 | **Private field** | _camelCase | `_moveSpeed` |
 | **Parameter** | camelCase | `damageAmount` |
 | **Local variable** | camelCase | `currentHealth` |

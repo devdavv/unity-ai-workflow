@@ -45,6 +45,29 @@ For the test asmdef, set:
 - `includePlatforms: ["Editor"]`, `defineConstraints: ["UNITY_INCLUDE_TESTS"]`
 - `overrideReferences: true`, `precompiledReferences: ["nunit.framework.dll"]`
 
+## Object Creation Patterns
+
+| Pattern | When to Use |
+|---------|-------------|
+| **Simple Factory** | One class creates instances of another. No DI needed. |
+| **SO Factory** | ScriptableObject holds prefab ref + config. Inspector-friendly. |
+| **DI Factory** | Container resolves dependencies during creation. DI-first only. |
+
+```csharp
+// Simple Factory (SO-first or DI-first)
+public class ProjectileFactory
+{
+    [SerializeField] private GameObject _prefab;
+    public GameObject Create(Vector3 position) =>
+        Object.Instantiate(_prefab, position, Quaternion.identity);
+}
+```
+
+For DI-first projects, factories register with the container to auto-inject dependencies into spawned objects. See `dependency-injection` skill.
+
+## Prefab Workflow
+Prefer prefab-based workflows over scene-embedded objects to avoid scene merge conflicts in team settings. Assemble scenes from prefab instances.
+
 ## Rules
 - **Never** create scripts outside of an assembly definition.
 - Always prefix with `Assets/_Project/` to avoid Asset Store conflicts.

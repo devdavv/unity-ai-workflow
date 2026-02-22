@@ -11,6 +11,8 @@
 |-------------------------|-------------------|---------------|----------------|
 | **Ideation / Brainstorming** | `GDD`, `GFD` | Game Designer | — |
 | **Architecture / Structure** | `TDD`, `ProjectConfig` | Architect | `unity-feature-scaffold` |
+| **DI / Dependency Injection Setup** | `TDD`, `ProjectConfig` | Architect | `dependency-injection` |
+| **State Machines / Game Flow** | `TDD`, `GDD` | Architect + Gameplay Dev | `state-machine` |
 | **Gameplay Logic / Systems** | `GDD`, `TDD`, `GFD` | Gameplay Dev + Game Designer | `scriptable-object-arch`, `game-feel-integrator` |
 | **Editor Tools / Inspectors** | `TDD` | Tool Developer | `unity-editor-tools` |
 | **User Interface** | `TDD` (UI section), `GFD` | UI Specialist | `ui-toolkit-binder` |

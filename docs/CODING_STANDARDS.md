@@ -99,10 +99,44 @@ GameDebug.Log($"Player {playerName} took {damage} damage");
 GameDebug.Log("Player " + playerName + " took " + damage + " damage");
 ```
 
+## Access Modifiers
+
+| Modifier | When to Use |
+|----------|-------------|
+| `private` | Default for all fields and internal methods |
+| `[SerializeField] private` | Inspector-exposed fields (never use `public` for this) |
+| `public` | API methods intended for external callers |
+| `internal` | APIs visible within an assembly but hidden outside it. Use for cross-class helpers within a feature asmdef that shouldn't be part of the public API. Follows same naming conventions as `public`. |
+| `protected` | Only when designing for inheritance |
+
 ## Async Patterns
 
 ```csharp
-// ✅ CORRECT — Awaitable (Unity 6+)
+// ✅ CORRECT — Awaitable (Unity 6+) with CancellationToken
+private async Awaitable LoadLevelAsync(CancellationToken ct) {
+    try {
+        await SceneManager.LoadSceneAsync("Level1").WithCancellation(ct);
+    } catch (OperationCanceledException) {
+        GameDebug.Log("Level load cancelled");
+    }
+}
+
+// ✅ CORRECT — Create scoped token linked to app lifetime
+var cts = CancellationTokenSource.CreateLinkedTokenSource(
+    Application.exitCancellationToken);
+
+// ✅ CORRECT — Per-scope tokens (cancel when scope exits)
+private CancellationTokenSource _levelCts;
+private void OnLevelStart() {
+    _levelCts = CancellationTokenSource.CreateLinkedTokenSource(
+        Application.exitCancellationToken);
+}
+private void OnLevelEnd() {
+    _levelCts?.Cancel();
+    _levelCts?.Dispose();
+}
+
+// ❌ WRONG — no cancellation, no error handling
 private async Awaitable LoadLevelAsync() {
     await SceneManager.LoadSceneAsync("Level1");
 }
@@ -112,3 +146,10 @@ private IEnumerator LoadLevel() {
     yield return SceneManager.LoadSceneAsync("Level1");
 }
 ```
+
+**Async rules:**
+- Always pass `CancellationToken` to async methods
+- Link scope tokens to `Application.exitCancellationToken`
+- Always `try/catch` for `OperationCanceledException` around awaits
+- Dispose `CancellationTokenSource` when scope ends
+- Create per-level/per-scene tokens for granular cancellation

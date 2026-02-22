@@ -7,8 +7,15 @@ description: Generate Unity 6+ UI Toolkit Runtime Data Binding code using MVVM p
 
 Generate MVVM UI code using Unity 6's Runtime Data Binding.
 
+## When to Use UI Toolkit vs uGUI
+- **UI Toolkit** — Recommended for menus, settings screens, inventories, data-heavy UI. Better performance (batched rendering, no GameObject overhead), future-proof.
+- **uGUI** — Valid for animated in-game HUDs, diegetic UI in world space, or when shipping fast with existing uGUI knowledge. Still maintained by Unity (not deprecated).
+- **Hybrid** — Use both in the same project. Common: UI Toolkit for menus, uGUI for in-game HUD.
+
+If `ProjectConfig.yaml → ui_system` is `UGUI`, this skill does not apply.
+
 ## Before You Start
-1. Verify `docs/ProjectConfig.yaml → ui_system` includes UIToolkit.
+1. Verify `docs/ProjectConfig.yaml → ui_system` includes UIToolkit or Mixed.
 2. Check `docs/GFD_Template.md` for UI motion guidelines if applicable.
 
 ## Architecture

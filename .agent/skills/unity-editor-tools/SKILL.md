@@ -103,3 +103,26 @@ The Editor asmdef must:
 - Reference the Runtime asmdef
 - Have `Editor` in its Include Platforms (only)
 - Never be referenced by Runtime assemblies
+
+## Build Validation
+
+Add pre-build validators to catch issues before shipping. Place in an Editor assembly.
+
+```csharp
+using UnityEditor;
+using UnityEditor.Build;
+using UnityEditor.Build.Reporting;
+
+public class PreBuildValidator : IPreprocessBuildWithReport
+{
+    public int callbackOrder => 0;
+
+    public void OnPreprocessBuild(BuildReport report) {
+        // Run unit tests — fail build if any test fails
+        // Validate all scenes in Build Settings exist
+        // Check for missing script references on prefabs
+    }
+}
+```
+
+Common validations: unit test pass/fail, scene list completeness, missing component references on prefabs, unresolved addressable entries.
