@@ -18,7 +18,7 @@ MyGame/                        ← Open THIS folder
 
 ## Project Config
 
-Read `docs/ProjectConfig.yaml` at the start of every session. It contains Unity version, packages, render pipeline, UI system, architecture pattern, dev mode, and prototype mode.
+Read `docs/ProjectConfig.yaml` at the start of every session. It contains Unity version, packages, render pipeline, UI system, architecture pattern, and dev mode.
 
 ## Dev Modes
 
@@ -29,7 +29,7 @@ Read `docs/ProjectConfig.yaml` at the start of every session. It contains Unity 
 
 ## Non-Negotiable Rules
 
-These are things LLMs consistently get wrong in Unity. Always enforced, even in prototype mode.
+These are things LLMs consistently get wrong in Unity. Always enforced.
 
 - `[SerializeField] private` only — never expose fields as `public` for the Inspector
 - Cache ALL component references in `Awake()` or `Start()`
@@ -44,10 +44,6 @@ These are things LLMs consistently get wrong in Unity. Always enforced, even in 
 - Visual Scripting forbidden for logic — Shader Graph & VFX Graph are fine
 - Never call Unity API from background threads
 - `/// <summary>` only on public API methods that warrant explanation — never on classes
-
-### Prototype Mode
-
-When `ProjectConfig.yaml → prototype_mode: true`: asmdef optional, public fields allowed, inline constants OK, docs optional. But GameDebug, component caching, no GetComponent in Update, New Input System, and no .meta touching are **always enforced**.
 
 ## Verification Marking
 

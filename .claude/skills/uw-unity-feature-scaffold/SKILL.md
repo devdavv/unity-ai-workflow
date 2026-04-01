@@ -1,15 +1,22 @@
 ---
 name: uw-unity-feature-scaffold
-description: Create a complete feature module with folder structure, Assembly Definition (.asmdef), test assembly, and namespace. Use when adding a new feature, system, or module to a Unity project. Triggers on requests like "create a new feature", "scaffold a module", "add a combat system", or any task requiring a new assembly/namespace. Reads ProjectConfig.yaml for folder_strategy (feature-based or type-based).
+description: Create a complete feature module with folder structure, Assembly Definition (.asmdef), test assembly, and namespace. Use when adding a new feature, system, or module to a Unity project. Triggers on requests like "create a new feature", "scaffold a module", "add a combat system", "I need a health system", "set up inventory", "create a new module for X", "add a new system", "new feature folder", or any task requiring new folders, assemblies, or namespaces for a gameplay feature — even when the user just names a system they want to build from scratch. Reads ProjectConfig.yaml for folder_strategy and MCP availability.
 ---
 
 # Unity Feature Scaffold
 
-Generate a feature module based on `docs/ProjectConfig.yaml → folder_strategy`.
+Generate a feature module with folders, assembly definitions, and a starter class based on `docs/ProjectConfig.yaml`.
 
 ## Before You Start
-1. Read `docs/ProjectConfig.yaml` for `folder_strategy` and project namespace.
-2. Ask the user for the **feature name** and confirm the namespace.
+
+1. Read `docs/ProjectConfig.yaml` for:
+   - `project_name` — derive root namespace by converting to PascalCase (e.g., `"my cool game"` → `MyCoolGame`)
+   - `folder_strategy` — `"feature-based"` or `"type-based"`
+   - `architecture_pattern` — `"so-first"` or `"di-first"` (informs post-scaffold next steps)
+   - `mcp.unity_mcp` — if `true`, call `refresh_unity` after creating files
+2. Ask the user for the **feature name** (PascalCase, e.g., `Combat`, `PlayerMovement`, `Inventory`).
+3. Derive the namespace: `{RootNamespace}.{FeatureName}` (e.g., `MyCoolGame.Combat`).
+4. Confirm the namespace with the user before generating files.
 
 ## Folder Structures
 
@@ -17,58 +24,113 @@ Generate a feature module based on `docs/ProjectConfig.yaml → folder_strategy`
 ```
 Assets/_Project/Features/{FeatureName}/
 ├── Scripts/
-│   ├── {FeatureName}.asmdef
-│   └── Runtime/
+│   ├── {RootNamespace}.{FeatureName}.asmdef
+│   └── {FeatureName}Manager.cs
 ├── Data/
 └── Tests/
-    └── {FeatureName}.Tests.asmdef
+    └── {RootNamespace}.{FeatureName}.Tests.asmdef
 ```
 
 **Type-based** (`folder_strategy: "type-based"`):
 ```
 Assets/_Project/Scripts/{FeatureName}/
-└── {FeatureName}.asmdef
+├── {RootNamespace}.{FeatureName}.asmdef
+└── {FeatureName}Manager.cs
 Assets/_Project/Tests/{FeatureName}/
-└── {FeatureName}.Tests.asmdef
+└── {RootNamespace}.{FeatureName}.Tests.asmdef
 ```
 
-## Assembly Definition
+## Assembly Definition Templates
 
-For the feature asmdef, set:
-- `name` and `rootNamespace` to `{ProjectNamespace}.{FeatureName}`
-- Reference `{ProjectNamespace}.Core`
-- `autoReferenced: true`, `allowUnsafeCode: false`
+### Feature asmdef
 
-For the test asmdef, set:
-- `name` to `{ProjectNamespace}.{FeatureName}.Tests`
-- Reference the feature asmdef + `UnityEngine.TestRunner` + `UnityEditor.TestRunner`
-- `includePlatforms: ["Editor"]`, `defineConstraints: ["UNITY_INCLUDE_TESTS"]`
-- `overrideReferences: true`, `precompiledReferences: ["nunit.framework.dll"]`
+File: `{RootNamespace}.{FeatureName}.asmdef`
 
-## Object Creation Patterns
-
-| Pattern | When to Use |
-|---------|-------------|
-| **Simple Factory** | One class creates instances of another. No DI needed. |
-| **SO Factory** | ScriptableObject holds prefab ref + config. Inspector-friendly. |
-| **DI Factory** | Container resolves dependencies during creation. DI-first only. |
-
-```csharp
-// Simple Factory (SO-first or DI-first)
-public class ProjectileFactory
+```json
 {
-    [SerializeField] private GameObject _prefab;
-    public GameObject Create(Vector3 position) =>
-        Object.Instantiate(_prefab, position, Quaternion.identity);
+    "name": "{RootNamespace}.{FeatureName}",
+    "rootNamespace": "{RootNamespace}.{FeatureName}",
+    "references": [
+        "GUID:{CoreAsmdefGUID}"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
 ```
 
-For DI-first projects, factories register with the container to auto-inject dependencies into spawned objects. See `uw-dependency-injection` skill.
+### Test asmdef
 
-## Prefab Workflow
-Prefer prefab-based workflows over scene-embedded objects to avoid scene merge conflicts in team settings. Assemble scenes from prefab instances.
+File: `{RootNamespace}.{FeatureName}.Tests.asmdef`
+
+```json
+{
+    "name": "{RootNamespace}.{FeatureName}.Tests",
+    "rootNamespace": "{RootNamespace}.{FeatureName}.Tests",
+    "references": [
+        "GUID:{FeatureAsmdefGUID}",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
+```
+
+**GUID references:** Read the GUID from the target `.asmdef.meta` file (the `guid` field on line 2). Use `GUID:` prefix for robustness against renames. Fall back to the string name (e.g., `"{RootNamespace}.Core"`) if the `.meta` file isn't accessible.
+
+## Starter File
+
+File: `{FeatureName}Manager.cs`
+
+```csharp
+using UnityEngine;
+
+namespace {RootNamespace}.{FeatureName}
+{
+    public class {FeatureName}Manager : MonoBehaviour
+    {
+    }
+}
+```
+
+This is a minimal entry point. The actual class name and base type should be adjusted to fit the feature — not every feature needs a MonoBehaviour manager.
+
+## Cross-Feature References
+
+When Feature B depends on Feature A, add Feature A's asmdef GUID to Feature B's `references` array. Read the GUID from Feature A's `.asmdef.meta` file — never modify `.meta` files directly.
+
+Keep dependencies **one-directional**. If two features need to communicate bidirectionally, extract shared interfaces or event channels into `{RootNamespace}.Core` (see `uw-scriptable-object-arch` for event channel patterns).
+
+## After Scaffolding
+
+- **Write tests:** Use `uw-unity-test-runner` — the test asmdef is already configured.
+- **Add architecture patterns:** Use `uw-scriptable-object-arch` (SO-first) or `uw-dependency-injection` (DI-first) based on `ProjectConfig.yaml → architecture_pattern`.
+- **Create editor tools:** Use `uw-unity-editor-tools` for custom inspectors or editor windows alongside the feature.
 
 ## Rules
-- **Never** create scripts outside of an assembly definition.
-- Always prefix with `Assets/_Project/` to avoid Asset Store conflicts.
-- Use Unity MCP `refresh_unity` after creating files.
+
+- All scripts must live inside an `.asmdef`.
+- All paths start with `Assets/_Project/` to avoid Asset Store conflicts.
+- Never create, modify, or delete `.meta` files — Unity generates them automatically.
+- Asmdef file names use dot notation: `{RootNamespace}.{FeatureName}.asmdef` (per `NAMING_CONVENTIONS.md`).
+- If `ProjectConfig.yaml → mcp.unity_mcp` is `true`, call `refresh_unity` after creating files. Otherwise, instruct the user to return to Unity Editor for auto-refresh.

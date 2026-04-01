@@ -1,11 +1,17 @@
 ---
 name: uw-unity-debugging
-description: Systematic 4-phase debugging framework for Unity projects with GameDebug wrapper generation. Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes. Triggers on requests like "this doesn't work", "there's a bug", "it crashes when", "fix this error", or any debugging task. Four-phase framework (root cause investigation, pattern analysis, hypothesis testing, implementation) that ensures understanding before attempting solutions.
+description: Systematic 4-phase debugging framework for Unity projects with GameDebug wrapper generation. Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes. Triggers on requests like "this doesn't work", "there's a bug", "it crashes when", "fix this error", "why is this happening", "null reference exception", "test is failing", "unexpected behavior", "something broke", or any debugging task. Four-phase framework (gather evidence, isolate, hypothesize, fix) that ensures understanding before attempting solutions.
 ---
 
 # Unity Debugging
 
 4-phase debugging framework. Also generates the `GameDebug` wrapper class.
+
+## Before You Start
+
+1. Check if `GameDebug.cs` already exists in the project (search for `class GameDebug`). If not, generate it using the template below during project setup.
+2. Read `docs/ProjectConfig.yaml -> mcp.unity_mcp` — if `true`, use `read_console` to read Unity console output.
+3. Read `docs/CODING_STANDARDS.md` for async patterns — bugs in async code often involve missing `CancellationToken` or unhandled `OperationCanceledException`.
 
 ## 4 Phases
 
@@ -28,7 +34,7 @@ description: Systematic 4-phase debugging framework for Unity projects with Game
 ### Phase 3: Hypothesize & Test
 1. State: *"I believe X happens because Y."*
 2. Write a test proving/disproving the hypothesis.
-3. If test fails → back to Phase 2.
+3. If test fails -> back to Phase 2.
 
 ### Phase 4: Fix & Verify
 1. Implement minimal fix.
@@ -88,3 +94,17 @@ public static class GameDebug
 **Output:** `[Gameplay] PlayerController.Start:42 — Player spawned`
 
 Add `ENABLE_LOGS` to Scripting Define Symbols for Development builds only. Customize `LogTopic` enum per project.
+
+## After Debugging
+
+- **Write regression test:** Use `uw-unity-test-runner` to add a test that catches the bug if it reappears.
+- **Code review:** Use `uw-code-review` to verify the fix doesn't introduce new issues.
+- **Visualize debug data:** Use `uw-unity-editor-tools` to add Gizmos or Handles for spatial debugging (visualize raycast paths, trigger volumes, etc.).
+
+## Rules
+
+- Always follow the 4-phase framework — never jump to a fix before gathering evidence and forming a hypothesis.
+- Use `GameDebug` wrapper, never raw `Debug.Log` / `Debug.LogWarning` / `Debug.LogError`.
+- Clean up all temporary debug logs after the fix is verified.
+- Write a regression test for every bug fix.
+- If `ProjectConfig.yaml -> mcp.unity_mcp` is `true`, use `read_console` for console output and `run_tests` to verify fixes.

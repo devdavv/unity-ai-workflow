@@ -83,7 +83,13 @@ Use `uw-unity-feature-scaffold` skill (`.claude/skills/uw-unity-feature-scaffold
 4. Follow `CLAUDE.md` rules (caching, serialization, GameDebug, no GetComponent in Update)
 5. Follow `docs/CODING_STANDARDS.md` + `docs/NAMING_CONVENTIONS.md`
 
-> **Tooling hint**: If the component has spatial data, complex configuration, or designer-facing parameters, suggest building a custom inspector/gizmos alongside it using the `uw-unity-editor-tools` skill.
+**Architecture-dependent skills** — load the relevant skill based on what the feature needs:
+- **Game data (weapons, enemies, items):** Use `uw-scriptable-object-arch` for SO data containers and event channels.
+- **DI services/commands:** If `ProjectConfig.yaml -> architecture_pattern: "di-first"`, use `uw-dependency-injection` for service registration and cross-feature Commands.
+- **State management:** If the feature involves discrete states (game flow, character states, AI phases), use `uw-state-machine`.
+- **UI screens/HUD:** If the feature has a UI component, use `uw-ui-toolkit-binder` (or uGUI if `ProjectConfig.yaml -> ui_system: "UGUI"`).
+- **Networking:** If the feature involves multiplayer sync, use `uw-network-setup`.
+- **Editor tools:** If the component has spatial data, complex configuration, or designer-facing parameters, use `uw-unity-editor-tools` for custom inspectors/gizmos.
 
 ### 7. Game Feel Integration (if "now" from Step 3)
 Use `uw-game-feel-integrator` skill, referencing the GFD row from Step 5:

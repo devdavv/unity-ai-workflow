@@ -30,19 +30,22 @@ Use `uw-unity-project-setup` skill:
 - Create `Assets/_Project/` with standard subfolders.
 - Structure depends on `folder_strategy` from ProjectConfig.
 - Create `Core.asmdef` in root scripts folder.
+- Create `Core.Tests.EditMode.asmdef` in `Tests/EditMode/` so the test runner skill has a test assembly from day one.
 
 ### 3. Install Packages
 From `docs/ProjectConfig.yaml -> packages`:
 - Via Unity MCP `manage_packages` if available.
-- Otherwise, provide manifest.json entries for manual install.
+- **Manual fallback (no MCP):** Write an editor script using `UnityEditor.PackageManager.Client.Add()` to install packages programmatically from a menu item. The user runs it once, then it can be deleted.
 - Install third-party from `docs/ProjectConfig.yaml -> third_party`.
 
 ### 4. Configure Editor Settings
-Via Unity MCP or manual instructions:
+Via Unity MCP if available:
 - Render pipeline (URP/HDRP/Built-in)
 - Color space: Linear
 - Scripting backend: IL2CPP
 - Target platform(s)
+
+**Manual fallback (no MCP):** Write an editor script using `PlayerSettings` and `GraphicsSettings` APIs to configure settings programmatically from a menu item (`Tools > Project Setup > Apply Settings`).
 
 ### 5. Generate Core Utilities
 - **GameDebug.cs** — Using `uw-unity-debugging` skill (`.claude/skills/uw-unity-debugging/SKILL.md`)

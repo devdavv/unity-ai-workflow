@@ -116,7 +116,6 @@ The AI reads `docs/ProjectConfig.yaml` to stay in sync with your versions, packa
 
 ```yaml
 ai_mode: "guided"        # guided | autonomous
-prototype_mode: false     # Relaxes architecture rules for rapid iteration
 ```
 
 ---

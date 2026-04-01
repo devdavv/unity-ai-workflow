@@ -33,6 +33,8 @@ Write the minimal code to make tests pass:
 - Follow `docs/CODING_STANDARDS.md` formatting
 - Follow `docs/NAMING_CONVENTIONS.md` for identifiers
 - Use `GameDebug` for debug logging
+- If creating SO data/events, follow `uw-scriptable-object-arch` patterns
+- If creating DI services, follow `uw-dependency-injection` patterns (when `architecture_pattern: "di-first"`)
 
 ### 5. Run Tests
 - Via Unity MCP `run_tests` if available.

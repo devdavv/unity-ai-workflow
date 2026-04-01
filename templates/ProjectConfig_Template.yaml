@@ -63,7 +63,6 @@ documentation: "Markdown" # Notion | Confluence | Markdown | None
 # autonomous = AI works autonomously after onboarding Q&A, minimal interruptions
 #              For best results, also enable Claude Code auto mode (claude --enable-auto-mode)
 ai_mode: "guided"
-prototype_mode: false     # Relaxes architecture rules (asmdef, public fields, docs) but never practices
 prompt_logging: true      # Append every prompt + ≤200-word AI summary to docs/PromptLog.md
 
 # Rule Overrides (uncomment to enable)

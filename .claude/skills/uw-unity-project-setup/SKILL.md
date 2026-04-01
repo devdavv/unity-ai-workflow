@@ -17,14 +17,24 @@ Orchestrate complete project initialization from `ProjectConfig.yaml`.
 ### 1. Verify ProjectConfig
 Confirm Unity version, packages, folder strategy, networking choice.
 
+**Required fields** — warn the user if any are missing or empty:
+- `project_name`
+- `unity_version`
+- `render_pipeline`
+- `scripting_backend`
+- `folder_strategy`
+
 ### 2. Create Folder Structure
 Based on `folder_strategy`, create `Assets/_Project/` with standard subfolders:
 - `Core/Scripts/` + `Core.asmdef`
+- `Core/Tests/EditMode/` + `Core.Tests.EditMode.asmdef` (so the test runner skill has a test assembly from day one)
 - `Features/` or `Scripts/` (depending on strategy)
 - `Art/`, `Audio/`, `UI/`, `Prefabs/`, `Scenes/`, `Tests/`
 
 ### 3. Install Packages
-From `ProjectConfig.yaml → packages`, install via Unity MCP `manage_packages` or provide `manifest.json` entries.
+From `ProjectConfig.yaml → packages`, install via Unity MCP `manage_packages` if available.
+
+**Manual fallback (no MCP):** Write an editor script (`Editor/Setup/PackageInstaller.cs`) using `UnityEditor.PackageManager.Client.Add()` to install packages programmatically. The user runs it once from the Unity menu, then it can be deleted.
 
 ### 4. Generate Core Utilities
 - **GameDebug.cs** via `uw-unity-debugging` skill
@@ -37,21 +47,42 @@ From `ProjectConfig.yaml → packages`, install via Unity MCP `manage_packages` 
 - Use GitHub MCP if available, otherwise git CLI
 
 ### 6. Configure Editor
+Via Unity MCP if available:
 - Render pipeline, color space (Linear), scripting backend (IL2CPP)
 
-### 7. Report MCP Status
+**Manual fallback (no MCP):** Write an editor script (`Editor/Setup/ProjectConfigurator.cs`) using `PlayerSettings` and `GraphicsSettings` APIs to set render pipeline, color space, scripting backend, and target platforms. Menu item under `Tools > Project Setup > Apply Settings`.
+
+### 7. Documentation Setup
+- Copy template files from `templates/` → `docs/`
+- Ensure GDD, TDD, GFD, PRD, SprintPlan are ready to be filled
+- If `ProjectConfig.yaml → prompt_logging: true`, create `docs/PromptLog.md`
+
+### 8. Report MCP Status
 ```
 ✅ Unity MCP — Connected
 ✅ GitHub MCP — Connected
 ⬜ Linear MCP — Not configured
 ```
 
+## Conditional Setup
+
+After core setup, check ProjectConfig for features that need additional skill guidance:
+
+| ProjectConfig Field | Condition | Action |
+|---|---|---|
+| `architecture_pattern` | `di-first` | Reference `uw-dependency-injection` skill for Reflex container setup |
+| `networking` | not `none` | Reference `uw-network-setup` skill for networking boilerplate |
+| `feel_tools` | any non-`none` value | Reference `uw-game-feel-integrator` skill for middleware integration |
+| `ui_system` | `UIToolkit` or `Mixed` | Reference `uw-ui-toolkit-binder` skill for data binding setup |
+
+Mention these as next steps — don't execute them during project setup.
+
 ## Asset Loading Strategy
 
 | Approach | When to Use |
 |----------|-------------|
 | **Direct references** | Prefabs/SOs referenced in Inspector — always loads with scene |
-| **Resources/** | Prototype only. Loads synchronously. Everything in Resources/ ships in build. |
+| **Resources/** | Small-scale or early development. Loads synchronously. Everything in Resources/ ships in build. |
 | **Addressables** | Production default. Async loading, memory management, optional remote hosting. Install `com.unity.addressables`. |
 | **AssetBundles** | Advanced/custom CDN pipelines. Addressables wraps this — prefer Addressables unless you need low-level control. |
 
