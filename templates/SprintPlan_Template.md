@@ -14,7 +14,7 @@ status: "Planning"
 
 ## Tasks
 
-| # | Task | Size | Depends On | Agent | Status | Linear ID |
+| # | Task | Size | Depends On | Skill / Command | Status | Linear ID |
 |---|------|------|-----------|-------|--------|-----------|
 | 1 | | S/M/L | — | | ⬜ | |
 | 2 | | | | | ⬜ | |

@@ -86,7 +86,7 @@
 | **URP Shader Graph** | Most cases — 2D effects, stylized materials, UI glow | Node-based, URP/HDRP native; no code required; preferred starting point |
 | **Custom HLSL shaders** | Performance-critical or highly custom effects | Vertex/fragment; full control; steeper learning curve |
 | **URP Render Features** | Fullscreen effects (outline, bloom, chromatic aberration, scanlines) | Applied as post-process pass; see URP Renderer Feature docs |
-| **Shader Graph + VFX Graph** | Particle systems driven by shader logic | Allowed per RULES.md — VFX Graph is the approved particle tool |
+| **Shader Graph + VFX Graph** | Particle systems driven by shader logic | VFX Graph is the approved particle tool |
 | [ShaderToy](https://www.shadertoy.com) | GLSL inspiration library | Free; port to HLSL manually; filter by complexity |
 
 ### Learning Resources [UNVERIFIED: check for current Unity 6 compatibility]
@@ -105,7 +105,7 @@ If you own these, they extend the built-in stack significantly — but the workf
 | [True Shadow](https://assetstore.unity.com/packages/tools/gui/true-shadow-ui-soft-shadow-and-glow-205220) | Soft drop shadows + glow for uGUI/UI Toolkit | Paid; far superior to Unity's built-in shadow component; add `has_true_shadow: true` to ProjectConfig if owned |
 
 ### Shader-First Game Feel
-Shaders are also valid **game feel tools** — not just visuals. See `.agent/skills/game-feel-integrator/references/shaders-as-feel.md` for:
+Shaders are also valid **game feel tools** — not just visuals. See `.claude/skills/uw-game-feel-integrator/references/shaders-as-feel.md` for:
 - Outline flash on hit
 - Dissolve on death / spawn
 - Chromatic aberration on damage
@@ -129,7 +129,7 @@ Shaders are also valid **game feel tools** — not just visuals. See `.agent/ski
 | [Leonardo.AI](https://leonardo.ai) | Game sprites, character sheets, tile sets | Free tier available; game-asset focused models |
 | [Stable Diffusion](https://stability.ai) | Any image generation | Open source; self-hostable via ComfyUI or Automatic1111 |
 | [Bing Image Creator](https://www.bing.com/images/create) | Quick concept art | Free; powered by DALL-E; good for rapid ideation |
-| [Fal.ai](https://fal.ai) | Fast AI image generation via MCP | Free tier + paid; SDXL/Flux models; MCP-connectable — Art Director can generate → Antigravity imports directly |
+| [Fal.ai](https://fal.ai) | Fast AI image generation via MCP | Free tier + paid; SDXL/Flux models; MCP-connectable for automated generation |
 | [Replicate](https://replicate.com) | Hosted ML models including image gen | Pay-per-run; MCP-connectable; good for batch texture generation |
 
 ### AI 3D Model Generation
@@ -202,7 +202,7 @@ Tools for managing your project, workflow, and team — not game assets, but ess
 
 ## Visual Communication Tools
 
-> Use these to sketch, wireframe, or mockup **before** coding. The agent will suggest the right tool based on context — you don't need to choose upfront.
+> Use these to sketch, wireframe, or mockup **before** coding. Claude Code will suggest the right tool based on context — you don't need to choose upfront.
 
 | Context | Tool | Notes |
 |---------|------|-------|
@@ -213,13 +213,13 @@ Tools for managing your project, workflow, and team — not game assets, but ess
 | **Preprod game overview** (all screens + connections) | [Miro](https://miro.com) | System diagram view; link to GDD sections |
 | **Icon sourcing** | [Iconify](https://iconify.design) | 200k+ icons; Figma plugin [UNVERIFIED: verify Pencil.dev plugin] |
 
-> **Agent behaviour**: In Step 2 of `/implement-feature`, if the feature involves new UI or a complex behavior flow, the agent will ask: *"Would a quick sketch help clarify this before we code? [Miro for system flow / Excalidraw for quick diagram / Pencil for UI layout]"* — answer with the tool name or 'no'.
+> **Behaviour**: In Step 2 of `/uw-cmd-implement-feature`, if the feature involves new UI or a complex behavior flow, Claude Code will ask: *"Would a quick sketch help clarify this before we code? [Miro for system flow / Excalidraw for quick diagram / Pencil for UI layout]"* — answer with the tool name or 'no'.
 
 ---
 
 ## Notable Unity Packages
 
-> Reference these when recommending packages during `/setup-project` or feature planning.
+> Reference these when recommending packages during `/uw-cmd-setup-project` or feature planning.
 > Always check version against `ProjectConfig.yaml` before using any API.
 
 ### Editor & Inspector Tools

@@ -1,13 +1,13 @@
 # Session State — [Date] [HH:MM]
 
-> **Purpose**: Paste this into a fresh Antigravity/Claude Code window to restore context without reloading the full conversation. The agent writes this when a session gets long (see RULES.md → Context Window Hygiene).
+> **Purpose**: Paste this into a fresh Claude Code conversation to restore context without reloading the full conversation. Claude Code offers to write this when a session gets long.
 
 ---
 
 ## Project
 
 - **Game**: [Project name]
-- **ProjectConfig**: `docs/ProjectConfig.yaml` — key settings: Unity [version], [render pipeline], [ui system], ai_mode: [assistant/mix/automatic]
+- **ProjectConfig**: `docs/ProjectConfig.yaml` — key settings: Unity [version], [render pipeline], [ui system], ai_mode: [guided/autonomous]
 - **Current Phase**: [Phase 0–5]
 - **Branch**: `[current git branch]`
 
@@ -65,4 +65,4 @@ List any unresolved `// TODO(gamefeel):` or `// ASSET:` markers here so the next
 
 ## Notes for Next Session
 
-[Anything the next agent should know before starting — gotchas, architectural constraints, user preferences expressed this session]
+[Anything the next session should know before starting — gotchas, architectural constraints, user preferences expressed this session]

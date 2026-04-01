@@ -1,0 +1,22 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat docs/ProjectConfig.yaml 2>/dev/null | head -20 || echo 'No ProjectConfig.yaml found — run /uw-cmd-setup-project to create one.'"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Read(docs/**)",
+      "Read(.claude/**)",
+      "Read(templates/**)"
+    ]
+  }
+}

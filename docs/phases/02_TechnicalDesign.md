@@ -1,6 +1,6 @@
 # Phase 2: Technical Design
 
-> **Agent**: Architect
+> **Skills**: `uw-unity-feature-scaffold`, `uw-state-machine`, `uw-dependency-injection` or `uw-scriptable-object-arch`
 > **Output**: Complete TDD
 
 ## Goal

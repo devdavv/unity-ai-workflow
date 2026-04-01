@@ -1,6 +1,6 @@
 # Game UI/UX Design Principles
 
-Reference for the **Art Director** agent when designing game interfaces.
+Reference for designing game interfaces. Used during `/uw-cmd-brainstorm`, `/uw-cmd-implement-feature`, and `/uw-cmd-polish`.
 
 ## Layout & Readability
 

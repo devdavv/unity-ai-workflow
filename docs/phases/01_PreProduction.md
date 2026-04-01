@@ -1,6 +1,6 @@
 # Phase 1: Pre-Production
 
-> **Agent**: Architect + Game Designer
+> **Command**: `/uw-cmd-setup-project` (for ProjectConfig)
 > **Output**: Complete ProjectConfig.yaml, finalized GDD
 
 ## Goal
@@ -9,7 +9,7 @@ Make all technical and design decisions before writing any code.
 ## Activities
 
 ### 1. Pre-Production Questionnaire
-The Architect agent guides the user through a comprehensive questionnaire.
+Claude Code guides you through a comprehensive questionnaire.
 
 > **Tip — Better input = better output**: For any open-ended decision (vision, player fantasy, reference games), use **TCREI** when prompting the AI:
 > - **T** — Task: What exactly do you need decided?
@@ -22,7 +22,7 @@ The Architect agent guides the user through a comprehensive questionnaire.
 
 | Question | Decision | ProjectConfig Field |
 |----------|----------|-------------------|
-| Dev mode? | Assistant / Mix / Automatic | `ai_mode` |
+| Dev mode? | Guided / Autonomous | `ai_mode` |
 | Unity version? | 6.2.0f1 | `unity_version` |
 | Render pipeline? | URP / HDRP | `render_pipeline` |
 | UI system? | UIToolkit / UGUI | `ui_system` |

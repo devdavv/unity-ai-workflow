@@ -8,14 +8,14 @@ status: "Draft"
 
 # Technical Design Document
 
-> **How to use this template**: Work through each section with the **Architect agent**. The agent will ask about your technical requirements and help you make informed architectural decisions. Reference `ProjectConfig.yaml` for context.
+> **How to use this template**: Work through each section during Phase 2 (Technical Design). Claude Code will ask about your technical requirements and help you make informed architectural decisions. Reference `ProjectConfig.yaml` for context.
 
 ---
 
 ## 1. System Architecture
 
 > **Diagramming**: Use [Mermaid](https://mermaid.js.org) for all architecture diagrams in this document.
-> Mermaid renders natively on GitHub and in most IDEs. The Architect agent can generate diagrams directly.
+> Mermaid renders natively on GitHub and in most IDEs. Claude Code can generate diagrams directly.
 > For complex visual exploration, use [Miro](https://miro.com) boards before committing to Mermaid.
 
 ### Assembly Definition Graph
@@ -186,7 +186,7 @@ Client Input → Server Validation → State Update → Client Sync
 
 ## 8. Editor Tooling
 
-<!-- List planned custom tools. The Tool Developer agent builds these alongside features. -->
+<!-- List planned custom tools. Build these alongside features using the unity-editor-tools skill. -->
 
 | Feature | Tool Type | Purpose |
 |---------|-----------|--------|
@@ -194,7 +194,7 @@ Client Input → Server Validation → State Update → Client Sync
 | <!-- e.g. Patrol Path --> | <!-- Handles + Gizmos --> | <!-- Drag waypoints in Scene view --> |
 | <!-- e.g. Level Data --> | <!-- EditorWindow --> | <!-- Batch validate all levels --> |
 
-> **Skill**: Use `unity-editor-tools` to generate these tools. See `tool-developer` agent.
+> **Skill**: Use `uw-unity-editor-tools` skill to generate these tools.
 
 ---
 

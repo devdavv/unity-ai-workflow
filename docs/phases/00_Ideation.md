@@ -1,7 +1,7 @@
 # Phase 0: Ideation
 
-> **Agent**: Game Designer
-> **Workflow**: `/brainstorm`
+> **Command**: `/uw-cmd-brainstorm`
+> **Skills**: `uw-game-feel-integrator`
 > **Output**: Draft GDD + Draft GFD
 
 ## Goal
@@ -10,7 +10,7 @@ Transform a rough game idea into structured design documentation.
 ## Activities
 
 ### 1. Vision Definition
-The Game Designer agent guides the user through:
+The `/uw-cmd-brainstorm` command guides you through:
 - One-sentence pitch
 - Core fantasy (what does the player *feel*?)
 - Target emotions

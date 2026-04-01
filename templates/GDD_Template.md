@@ -8,7 +8,7 @@ status: "Draft"
 
 # Game Design Document
 
-> **How to use this template**: Work through each section with the **Game Designer agent** (via `/brainstorm`). The agent will ask guiding questions and help you fill in each section. Leave sections blank if they don't apply to your project.
+> **How to use this template**: Work through each section via `/uw-cmd-brainstorm`. Claude Code will ask guiding questions and help you fill in each section. Leave sections blank if they don't apply to your project.
 
 ---
 

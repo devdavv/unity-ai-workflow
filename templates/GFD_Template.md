@@ -8,7 +8,7 @@ status: "Draft"
 
 # Game Feel Document
 
-> **How to use this template**: Work through the Feedback Matrix with the **Game Designer agent** during `/brainstorm` (initial pass), `/implement-feature` (one row per feature during production), or `/polish` (final tuning). Every meaningful player action should produce at least 3 types of feedback.
+> **How to use this template**: Work through the Feedback Matrix during `/uw-cmd-brainstorm` (initial pass), `/uw-cmd-implement-feature` (one row per feature during production), or `/uw-cmd-polish` (final tuning). Every meaningful player action should produce at least 3 types of feedback.
 
 ---
 
@@ -98,7 +98,7 @@ status: "Draft"
 
 ## 8. Design System
 
-> **How to use**: Fill this out during **Phase 1 (Pre-Production)** with the **Art Director** agent. This becomes the single source of truth for all visual decisions.
+> **How to use**: Fill this out during **Phase 1 (Pre-Production)**. This becomes the single source of truth for all visual decisions.
 
 ### Color Palette
 

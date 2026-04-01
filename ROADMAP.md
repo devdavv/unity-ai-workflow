@@ -1,67 +1,63 @@
 # Unity AI Workflow — Roadmap
 
-## ✅ v0.1–v0.4: Foundation (Complete)
+## v0.1-v0.5: Foundation & Vision (Historical)
 
-All core infrastructure is built and working:
+All core infrastructure built, iterated, and aligned:
 
-- [x] Core repository structure (`.agent/`, `templates/`, `docs/`)
-- [x] Global rules & auto-routing (`RULES.md`, `AGENTS.md`)
-- [x] 8 Agent personas (Architect, Gameplay Dev, UI Specialist, Game Designer, QA Tester, Network Engineer, Art Director, Tool Developer)
-- [x] 7 Workflows (`/brainstorm`, `/plan`, `/create`, `/test`, `/debug`, `/polish`, `/setup-project`)
-- [x] 9 Skills (feature scaffold, UI toolkit binder, scriptable-object arch, game feel integrator, network setup, test runner, debugging, project setup, editor tools)
-- [x] 5 Templates (GDD, GFD, TDD, SprintPlan, ProjectConfig)
-- [x] 6 Phase guides (00 Ideation → 05 Polish)
+- [x] Core repository structure, global rules & auto-routing
+- [x] 8 Agent personas, 7 workflows, 9 skills, 5 templates, 6 phase guides
 - [x] Coding standards, naming conventions, git conventions
-- [x] Asset resources, MCP setup docs, design principles
+- [x] Three dev modes (Assistant / Mix / Automatic)
+- [x] `/uw-cmd-implement-feature` workflow — unified feature loop with game feel integrated per-feature
+- [x] TCREI prompting methodology + `uw-code-review` skill + prompt logging
+- [x] Verification marking system (`[VERIFIED]` / `[SYNTHESIZED]` / `[UNVERIFIED]`)
+- [x] Game feel theory & shader references
+- [x] Claude Code support — `CLAUDE.md`, `.claude/commands/` (9 slash commands)
+- [x] Hybrid workflow support — Claude Code + Antigravity sharing `.agent/skills/`
 
 ---
 
-## ✅ v0.5: Vision Alignment (Complete)
+## v2.0: Claude Code Native (Current)
 
-Advancing the repository from a foundation to a complete, opinionated workflow system:
+Complete revamp based on latest AI research (Addy Osmani on AGENTS.md, ETH Zurich studies, Anthropic Skills 2.0).
 
-- [x] Three Dev Modes (Assistant / Mix / Automatic) — `ProjectConfig.yaml`, `RULES.md`, `AGENTS.md`
-- [x] `/implement-feature` workflow — unified feature loop with game feel integrated per-feature
-- [x] AI Generation Tools section — `docs/ASSET_RESOURCES.md` (Midjourney, Meshy, ElevenLabs, Suno, Fal.ai, Replicate, Iconify)
-- [x] Phase 4 Production rewritten around the feature loop
-- [x] `/setup-project` now includes dev mode selection + automatic mode onboarding Q&A
-- [x] README rewritten to lead with dev modes and integrated game feel philosophy + resources/credits section
-- [x] Removed FEEL/MMFeedbacks as default — not AI-friendly; DOTween/PrimeTween + custom code is the approach
-- [x] Cinemachine de-defaulted — opt-in only, custom camera as default
-- [x] TCREI prompting methodology + `/code-review` skill + prompt logging — `AGENTS.md`, `RULES.md`
-- [x] Verification marking system (`[VERIFIED]` / `[SYNTHESIZED]` / `[UNVERIFIED]`) — `RULES.md`, `implement-feature.md`
-- [x] Game feel theory & shader references — `game-feel-integrator/references/` (ADSR envelope, Three Pillars, shaders-as-feel)
-- [x] Visual Communication Tools + Shaders & Procedural Graphics — `docs/ASSET_RESOURCES.md`
-- [x] MCP setup enriched (Tavily, claude-mem) — `docs/MCP_SETUP.md`
-- [x] Claude Code Skills Ecosystem section — `docs/TOOLING.md`
-- [x] SessionState handoff template — `templates/SessionState_Template.md`
-- [x] Skill descriptions validated against Anthropic skill-creator trigger format
-- [x] Phase 5 Polish guide clarified as "final tuning" not "first-time polish"
-
----
-
-## 🔧 v1.0: Public Release & Multi-IDE Support (Current)
-
-- [x] Claude Code support — `CLAUDE.md` (auto-loaded instructions), `.claude/commands/` (9 slash commands), dual-native architecture
-- [x] Hybrid workflow support — Claude Code + Antigravity sharing `.agent/skills/`, docs, and templates as common brain
-- [ ] Cursor support (`.cursor/rules/`, `.mdc` format conversion)
-- [ ] Comprehensive sample project walkthrough using automatic mode (a complete game end-to-end)
+- [x] **100% Claude Code native** — removed Antigravity as first-class platform
+- [x] **Minimal CLAUDE.md** (~80 lines) — only non-discoverable Unity gotchas, per research showing verbose context files reduce success rates 2-3%
+- [x] **Agent personas dissolved** — 8 persona files folded into skills and commands where non-discoverable
+- [x] **Skills migrated** to `.claude/skills/` with structural prep for Skills 2.0 format
+- [x] **Official Anthropic uw-skill-creator 2.0** — replaces custom skill-creator with full evaluation framework
+- [x] **Dev modes simplified** from 3 (assistant/mix/automatic) to 2 (guided/autonomous), leveraging Claude Code native auto mode
+- [x] **Commands updated** — all 9 slash commands self-contained (no agent file dependencies)
+- [x] **PRD template** added alongside existing GDD/TDD/GFD templates
+- [x] **Hook configurations** in `.claude/settings.json`
+- [x] **`.agent/` directory removed** — entire tree deleted, all content in `.claude/`
+- [ ] Run each of 12 skills through uw-skill-creator 2.0 evaluation loop (description optimization, trigger testing, context mode selection)
+- [ ] Comprehensive sample project walkthrough using autonomous mode
 - [ ] Community feedback integration (CONTRIBUTING.md, issue templates)
-- [ ] `skill-creator` skill for generating new Unity-specific skills from within the workflow
 
 ---
 
-## 🔭 Future / Side Projects
+## Future
+
+### Skill Optimization Sprint
+- Run all 12 skills through uw-skill-creator 2.0 with evaluation framework
+- Optimize descriptions for triggering accuracy (60/40 train/test split)
+- Set `context: fork | inline` per skill based on token analysis
+- Trim skill bodies to remove discoverable information
 
 ### Documentation Website
-- Interactive examples showing prompt → result for each workflow
+- Interactive examples showing prompt -> result for each workflow
 - Setup walkthroughs with screenshots/video
-- Project showcase: real games built with this workflow + the prompts used
-- Side-by-side comparison: Claude Code vs Antigravity vs hybrid usage
-- Best practices for token optimization across AI tools
+- Project showcase: real games built with this workflow
+- Best practices for token optimization
 
 ### AI Asset Generation Pipelines
-- Sprite generation pipeline (Stable Diffusion → Unity import)
-- SFX generation pipeline (ElevenLabs Sound FX → AudioClip)
-- 3D model pipeline (Meshy → FBX import → Unity materials)
-- Curated asset pack recommendations per game genre
+- Sprite generation pipeline (Stable Diffusion -> Unity import)
+- SFX generation pipeline (ElevenLabs Sound FX -> AudioClip)
+- 3D model pipeline (Meshy -> FBX import -> Unity materials)
+
+### Hook Library
+- Pre-commit C# linting hooks
+- Post-write format validation hooks
+- Session start context injection hooks
+- Community-contributed hook recipes

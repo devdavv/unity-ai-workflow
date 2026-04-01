@@ -1,5 +1,5 @@
 # ProjectConfig Template
-# Fill this out with the Architect agent during Phase 1 (Pre-Production)
+# Fill this out during Phase 1 (Pre-Production) via /uw-cmd-setup-project
 # This file is the AI's primary context snapshot for your project
 
 project_name: ""
@@ -45,7 +45,7 @@ visual_plugins:
   has_true_shadow: false    # True Shadow — soft UI drop shadows for UI Toolkit / UGUI
 
 # MCP Integrations
-# Ask user during /setup-project which MCPs they have configured.
+# Ask user during /uw-cmd-setup-project which MCPs they have configured.
 # Enable only what is available — never assume they are connected.
 mcp:
   unity_mcp: false      # Lets AI inspect/modify scenes, prefabs, packages, run tests
@@ -59,12 +59,11 @@ documentation: "Markdown" # Notion | Confluence | Markdown | None
 
 # Behavior
 # Dev Mode: controls AI autonomy vs. user control for the whole project
-# assistant = AI assists only — user drives all decisions, AI explains and documents
-# mix       = AI suggests and executes after user confirmation (default, recommended)
-# automatic = AI works autonomously after initial onboarding Q&A, minimal interruptions
-ai_mode: "mix"
-auto_confirm: false       # Skip confirmation prompts (overridden by ai_mode: automatic)
-prototype_mode: false     # See RULES.md Section 7 for exact relaxation table
+# guided    = Collaborative — AI suggests, confirms before major changes (default)
+# autonomous = AI works autonomously after onboarding Q&A, minimal interruptions
+#              For best results, also enable Claude Code auto mode (claude --enable-auto-mode)
+ai_mode: "guided"
+prototype_mode: false     # Relaxes architecture rules (asmdef, public fields, docs) but never practices
 prompt_logging: true      # Append every prompt + ≤200-word AI summary to docs/PromptLog.md
 
 # Rule Overrides (uncomment to enable)

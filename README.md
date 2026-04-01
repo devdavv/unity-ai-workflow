@@ -1,59 +1,52 @@
 # Unity AI Workflow
 
-A comprehensive, agent-first toolkit for AI-assisted Unity development. Works with **Claude Code** (primary) and **Google Antigravity IDE**. This repository provides the "brain" (rules, agents, skills, and workflows) to turn your AI assistant into an expert Unity team.
+A comprehensive, skills-first toolkit for AI-assisted Unity development, built for **Claude Code**. This repository provides the "brain" (skills, commands, docs, and templates) to turn Claude Code into an expert Unity team.
 
-> **No Unity project inside** — this repo is pure workflow infrastructure (rules, agents, skills, docs, templates). You copy it into your game's workspace and the AI reads it as its operating manual.
+> **No Unity project inside** — this repo is pure workflow infrastructure. You copy it into your game's workspace and Claude Code reads it as its operating manual.
 
-## 🎮 Dev Modes
+## Dev Modes
 
 Choose how much the AI does vs. how much you do:
 
 | Mode | Who Builds | Best For |
 |------|-----------|---------|
-| **Assistant** | You build. AI documents, advises, and explains. | Learning, full creative control |
-| **Mix** *(default)* | Collaborative. AI suggests; you confirm key decisions. | Most projects |
-| **Automatic** | AI builds after a short onboarding Q&A. | Rapid prototyping, jam games |
+| **Guided** *(default)* | Collaborative. AI suggests; you confirm key decisions. | Most projects |
+| **Autonomous** | AI builds after a short onboarding Q&A. | Rapid prototyping, jam games |
 
-Set your mode in `docs/ProjectConfig.yaml → ai_mode`. You can change it at any time.
-
-**Automatic mode success story**: *"I told the AI my game idea, answered a few setup questions, and it created the scripts, integrated assets, and built a working prototype — minimal manual setup."*
+Set your mode in `docs/ProjectConfig.yaml -> ai_mode`. Enable Claude Code auto mode alongside autonomous for best results.
 
 ---
 
-## 🧃 Core Philosophy: Game Feel is Not Optional Later
+## Core Philosophy: Game Feel is Not Optional Later
 
-Every feature is built complete using `/implement-feature`:
+Every feature is built complete using `/uw-cmd-implement-feature`:
 
 ```
-interrogation → GDD/GFD docs → TDD implementation → game feel integration → commit
+interrogation -> GDD/GFD docs -> TDD implementation -> game feel integration -> commit
 ```
 
 The AI asks about VFX, SFX, camera reactions, and haptics **before writing a single line of code**. Polish is iterative, not a phase. A feature isn't "done" when it compiles — it's done when it plays well.
 
 ---
 
-## 📂 Recommended Workspace Structure
+## Recommended Workspace Structure
 
 > [!IMPORTANT]
-> **Don't open the Unity project directly.** Instead, create a **parent workspace folder** containing both your Unity project and docs. This lets the AI read design documents, templates, AND Unity code simultaneously.
+> **Don't open the Unity project directly.** Create a **parent workspace folder** containing both your Unity project and docs. This lets Claude Code read design documents, templates, AND Unity code simultaneously.
 
 ```
-MyGame/                          ← Open THIS folder in your AI tool
-├── CLAUDE.md                    ← Claude Code instructions (auto-loaded)
-├── .claude/commands/            ← Slash commands (Claude Code)
-├── .agent/                      ← AI brain (Antigravity + shared skills)
-│   ├── rules/
-│   ├── agents/
-│   ├── skills/                  ← Shared knowledge base (both tools)
-│   └── workflows/               ← Antigravity workflows
-├── docs/                        ← Living documents (filled during pre-prod)
+MyGame/                          <- Open THIS folder in Claude Code
+├── CLAUDE.md                    <- Auto-loaded instructions (minimal, ~80 lines)
+├── .claude/
+│   ├── commands/                <- Slash commands (/uw-cmd-implement-feature, /uw-cmd-brainstorm, etc.)
+│   ├── skills/                  <- 13 reusable knowledge modules
+│   └── settings.json            <- Hooks & permissions
+├── docs/                        <- Living documents (filled during development)
 │   ├── ProjectConfig.yaml
-│   ├── GDD.md
-│   ├── TDD.md
-│   ├── GFD.md
-│   └── SprintPlan.md
-├── templates/                   ← Pristine starters (for reference)
-└── MyGameUnity/                 ← Unity project (created via Unity Hub)
+│   ├── GDD.md, TDD.md, GFD.md
+│   └── phases/                  <- 6 phase guides
+├── templates/                   <- Pristine starters (for reference)
+└── MyGameUnity/                 <- Unity project (created via Unity Hub)
     ├── Assets/
     ├── Packages/
     └── ProjectSettings/
@@ -61,46 +54,50 @@ MyGame/                          ← Open THIS folder in your AI tool
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
-### With Claude Code
-
-1. **Create your workspace**: Create a parent folder for your game (e.g. `MyGame/`).
+1. **Create your workspace**: Create a parent folder for your game (e.g., `MyGame/`).
 2. **Copy the toolkit**: Copy everything from this repo into your workspace root.
-3. **Create your Unity project**: Inside the workspace via Unity Hub (e.g. `MyGame/MyGameUnity/`).
+3. **Create your Unity project**: Inside the workspace via Unity Hub (e.g., `MyGame/MyGameUnity/`).
 4. **Open the workspace** in your terminal or VS Code with Claude Code.
-5. `CLAUDE.md` is **auto-loaded** — rules, routing, and workflow suggestions are built in.
-6. **Run `/setup-project`**: The AI walks you through dev mode selection and full project initialization.
-
-### With Antigravity
-
-1. **Create your workspace** and **copy the toolkit** (same as above).
-2. **Create your Unity project** inside the workspace via Unity Hub.
-3. **Open the parent folder** (not the Unity folder) in Antigravity.
-4. **Run `/setup-project`**: Same workflow, powered by `.agent/workflows/`.
-5. **Connect MCPs** (Agent panel > ... > MCP Servers):
-   - **Unity MCP**: For in-editor scene/prefab/asset management
-   - **GitHub MCP**: For automated git operations
-   - **Linear/Notion MCP**: For task and doc syncing
-
-> Both tools share the same skills (`.agent/skills/`), docs, and templates. You can switch between them freely.
+5. `CLAUDE.md` is **auto-loaded** — rules and workflow suggestions are built in.
+6. **Run `/uw-cmd-setup-project`**: Claude Code walks you through dev mode selection and full project initialization.
 
 ---
 
-## 🧠 How it Works
+## How It Works
 
-- **Global Constitution**: `CLAUDE.md` (Claude Code) and `RULES.md` (Antigravity) enforce Unity 6.2+ best practices, performance standards, and thread safety.
-- **Auto-Routing**: Agent routing table automatically loads the right personas and skills based on your task and `ai_mode`.
-- **TCREI Prompting**: Agents use the Task-Context-References-Evaluate-Iterate methodology for structured, high-quality outputs.
+- **Minimal CLAUDE.md**: ~80 lines of non-discoverable Unity gotchas — only what the AI consistently gets wrong. No bloat. Based on research showing verbose context files reduce AI performance.
+- **Skills 2.0**: 13 reusable knowledge modules in `.claude/skills/`, using Anthropic's latest skill format with progressive disclosure (metadata -> body -> references).
+- **Slash Commands**: 9 workflows as Claude Code commands — `/uw-cmd-brainstorm`, `/uw-cmd-plan`, `/uw-cmd-create`, `/uw-cmd-implement-feature`, `/uw-cmd-test`, `/uw-cmd-debug`, `/uw-cmd-polish`, `/uw-cmd-review`, `/uw-cmd-setup-project`.
 - **Verification System**: Every AI recommendation is marked `[VERIFIED]`, `[SYNTHESIZED]`, or `[UNVERIFIED]` — no silent hallucinations.
-- **Expert Skills**: Dedicated skills for UI Toolkit data binding, ScriptableObject architecture, Netcode, game feel, testing, debugging, and more.
-- **Integrated Feature Loop**: `/implement-feature` combines code + game feel in one pass, with deep interrogation before any coding starts.
-- **Session Handoff**: `SessionState` template ensures context survives across AI sessions.
-- **Guided Workflows**: Slash commands for every phase of development.
+- **Integrated Feature Loop**: `/uw-cmd-implement-feature` combines code + game feel in one pass, with deep interrogation before any coding starts.
+- **Session Handoff**: `SessionState` template ensures context survives across conversations.
+- **Hooks**: Claude Code hooks in `.claude/settings.json` for automated workflows.
 
 ---
 
-## 📅 Project Phases
+## Skills
+
+| Skill | Purpose |
+|-------|---------|
+| `uw-game-feel-integrator` | Inject juice (VFX, SFX, camera, tweens, haptics) using Rule of Three |
+| `uw-scriptable-object-arch` | SO-first data architecture (default pattern) |
+| `uw-dependency-injection` | DI-first using Reflex (opt-in) |
+| `uw-state-machine` | Interface-based FSMs for game flow and characters |
+| `uw-ui-toolkit-binder` | Unity 6+ Runtime Data Binding (MVVM) |
+| `uw-network-setup` | Package-agnostic networking boilerplate |
+| `uw-unity-project-setup` | Full project initialization wizard |
+| `uw-unity-feature-scaffold` | Feature folder + asmdef + test assembly |
+| `uw-unity-test-runner` | NUnit test generation from Gherkin scenarios |
+| `uw-unity-debugging` | GameDebug wrapper with conditional compilation |
+| `uw-unity-editor-tools` | Custom Inspectors, Gizmos, EditorWindows |
+| `uw-code-review` | Unity-specific pre-commit quality checklist |
+| `uw-skill-creator` | Official Anthropic skill-creator 2.0 — create, test, and optimize new skills |
+
+---
+
+## Project Phases
 
 Follow the phase guides in `docs/phases/` for a standardized development journey:
 
@@ -108,77 +105,57 @@ Follow the phase guides in `docs/phases/` for a standardized development journey
 2. **[01: Pre-Production](docs/phases/01_PreProduction.md)** — Technical choices, stack definition, naming conventions.
 3. **[02: Technical Design](docs/phases/02_TechnicalDesign.md)** — Architecture, Assembly Definitions, patterns.
 4. **[03: Project Setup](docs/phases/03_ProjectSetup.md)** — Automated folder scaffolding and package installation.
-5. **[04: Production](docs/phases/04_Production.md)** — Feature-by-feature loop (interrogate → implement → feel → commit).
+5. **[04: Production](docs/phases/04_Production.md)** — Feature-by-feature loop (interrogate -> implement -> feel -> commit).
 6. **[05: Polish](docs/phases/05_Polish.md)** — Final tuning pass, visual refinement, performance profiling.
 
 ---
 
-## 🛠️ Configuration
+## Configuration
 
 The AI reads `docs/ProjectConfig.yaml` to stay in sync with your versions, packages, and architectural choices. Key settings:
 
 ```yaml
-ai_mode: "mix"          # assistant | mix | automatic
-prototype_mode: false   # Relaxes architecture rules for rapid iteration
-auto_confirm: false     # Skip confirmation prompts (overridden by automatic mode)
+ai_mode: "guided"        # guided | autonomous
+prototype_mode: false     # Relaxes architecture rules for rapid iteration
 ```
 
 ---
 
-## 📋 Roadmap
+## Roadmap
 
 See **[ROADMAP.md](ROADMAP.md)** for the full version history and what's planned next.
 
 ---
 
-## 🙏 Resources & Inspiration
+## Resources & Inspiration
 
 This workflow was built with the help of these resources. Ratings reflect how much each influenced the final result.
 
-### GitHub Repos
+### Key Influences
 
 | Resource | Rating | Influence |
 |----------|--------|-----------|
-| [anthropics/skills](https://github.com/anthropics/skills) | ⭐⭐⭐⭐⭐ | Official skill format — canonical reference for skill structure |
-| [sickn33/antigravity-awesome-skills](https://github.com/sickn33/antigravity-awesome-skills) | ⭐⭐⭐⭐⭐ | Core inspiration for Antigravity-native skill patterns |
-| [Common-ka/ai-agent-unity-rules](https://github.com/Common-ka/ai-agent-unity-rules) | ⭐⭐⭐⭐ | Unity-specific AI rules — shaped our rules/agents structure |
-| [vudovn/antigravity-kit](https://github.com/vudovn/antigravity-kit) | ⭐⭐⭐⭐ | Workflow/skill structure reference for `.agent/` layout |
-| [obra/superpowers](https://github.com/obra/superpowers) | ⭐⭐⭐⭐ | Agent persona / superpowers philosophy — influenced agent routing |
-| [gsd-build/get-shit-done](https://github.com/gsd-build/get-shit-done) | ⭐⭐⭐⭐ | Pragmatic workflow philosophy |
-| [CoplayDev/unity-mcp](https://github.com/CoplayDev/unity-mcp) | ⭐⭐⭐⭐ | Unity MCP integration — directly referenced in MCP setup |
-| [stillwwater/UnityStyleGuide](https://github.com/stillwwater/UnityStyleGuide) | ⭐⭐⭐⭐ | Naming conventions baseline |
-| [justinwasilenko/Unity-Style-Guide](https://github.com/justinwasilenko/Unity-Style-Guide) | ⭐⭐⭐⭐ | Folder structure + conventions |
-| [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | ⭐⭐⭐ | UI skill patterns (adapted for UI Toolkit) |
-| [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | ⭐⭐⭐ | Claude Code ecosystem overview |
-| [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | ⭐⭐⭐ | Memory/session persistence patterns |
-| [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) | ⭐⭐⭐ | Curated list — helped discover other repos |
-| [automazeio/ccpm](https://github.com/automazeio/ccpm) | ⭐⭐⭐ | Claude Code project management patterns |
+| [anthropics/skills](https://github.com/anthropics/skills) | ***** | Official skill format — canonical reference, skill-creator 2.0 |
+| [Common-ka/ai-agent-unity-rules](https://github.com/Common-ka/ai-agent-unity-rules) | **** | Unity-specific AI rules — shaped rules structure |
+| [obra/superpowers](https://github.com/obra/superpowers) | **** | Composable skill format, agent routing philosophy |
+| [gsd-build/get-shit-done](https://github.com/gsd-build/get-shit-done) | **** | Pragmatic workflow philosophy, session state |
+| [CoplayDev/unity-mcp](https://github.com/CoplayDev/unity-mcp) | **** | Unity MCP integration |
+| [stillwwater/UnityStyleGuide](https://github.com/stillwwater/UnityStyleGuide) | **** | Naming conventions baseline |
+| [PracticAPI — The Perfect Unity Project](https://www.patreon.com/posts/perfect-unity-132380321) | ***** | Reference architecture for production Unity 6 |
+| [Loic Jacob — Game Feel Theory](https://loicjacob.notion.site/generate-strong-and-consistent-sensations-in-the-gameplay) | ***** | ADSR envelope, Three Pillars, Sensation Vocabulary |
+| [TCREI Prompt Engineering Framework](https://medium.com/@datasciencedisciple/2-prompt-engineering-frameworks-to-become-top-2-ai-user-b366b0e7367a) | ***** | TCREI methodology baked into commands |
 
-### YouTube Videos
+### Research That Shaped v2.0
 
-| Video | Creator | Rating | Influence |
-|-------|---------|--------|-----------|
-| [Advanced Project - Simple Game (Unity)](https://www.youtube.com/watch?v=AOdr6Q7ABFU) | PracticAPI | ⭐⭐⭐⭐⭐ | Production-quality Unity 6 architecture — SEP, MVC+Commands, DI, state machines, pooling, Addressables. Directly influenced DI skill and class taxonomy |
-| [Essential AI Skills For 2026](https://youtu.be/jm2jBW462bU) | Tina Huang | ⭐⭐⭐⭐⭐ | Introduced TCREI methodology and key tools we implemented |
-| [You're Using Claude Code Wrong — 10 Tips](https://youtu.be/V9atNrDjnZs) | Simon Scrapes \| AI Automation | ⭐⭐⭐⭐½ | Inspired the verification/hallucination-checking system |
-| [How I Use Claude Code (Meta Staff Engineer Tips)](https://youtu.be/mZzhfPle9QU) | John Kim | ⭐⭐⭐½ | Helpful Claude Code usage patterns |
-| [Google's AI Prompt Engineering Course in 20 Min](https://youtu.be/p09yRj47kNM) | Tina Huang | ⭐⭐⭐ | Good prompting fundamentals |
-
-### Web Resources
-
-| Resource | Rating | Influence |
-|----------|--------|-----------|
-| [PracticAPI — The Perfect Unity Project](https://www.patreon.com/posts/perfect-unity-132380321) | ⭐⭐⭐⭐⭐ | Reference architecture for production Unity 6 — MVC, Commands, DI, state machines, 14 documented techniques |
-| [Unity — Organizing Your Project](https://unity.com/how-to/organizing-your-project) | ⭐⭐⭐⭐⭐ | Official guidance — directly shaped recommended folder structure |
-| [TCREI Prompt Engineering Framework](https://medium.com/@datasciencedisciple/2-prompt-engineering-frameworks-to-become-top-2-ai-user-b366b0e7367a) | ⭐⭐⭐⭐⭐ | TCREI methodology is baked into AGENTS.md |
-| [Loic Jacob — Game Feel Theory](https://loicjacob.notion.site/generate-strong-and-consistent-sensations-in-the-gameplay) | ⭐⭐⭐⭐⭐ | ADSR envelope, Three Pillars, Sensation Vocabulary |
-| [skills.sh](https://skills.sh/) | ⭐⭐⭐⭐ | Skill discovery catalog |
-| [Unity AI Features](https://unity.com/features/ai) | ⭐⭐⭐ | Context for Unity's AI direction |
-| [Unity Sentis Documentation](https://docs.unity3d.com/Packages/com.unity.ai.inference@2.2/manual/) | ⭐⭐⭐ | Reference for in-engine AI inference |
-| [Unity 6 AI Manual](https://docs.unity3d.com/6000.3/Documentation/Manual/unity-ai.html) | ⭐⭐⭐ | Future-facing Unity AI reference |
-
-*Plus various AI-assisted research sessions (Perplexity, Google AI Studio) for game feel theory, shader patterns, and asset pipeline research.*
+| Resource | Key Insight |
+|----------|-------------|
+| [Addy Osmani — AGENTS.md](https://addyosmani.com/blog/agents-md/) | Verbose context files reduce AI success rates. Only non-discoverable info belongs. |
+| [Zazen Codes — Stop using AGENTS.md](https://zazencodes.substack.com/p/stop-using-agentsmd-and-claudemd) | Keep files short, eliminate duplication, agent-specific instructions only |
+| [Claude Blog — Auto Mode](https://claude.com/blog/auto-mode) | Native auto mode replaces custom autonomous dev modes |
+| [Claude Blog — Code Review](https://claude.com/blog/code-review) | Multi-agent parallel review, GitHub App integration |
+| [Claude Blog — Hooks](https://claude.com/blog/how-to-configure-hooks) | 8 hook types for workflow automation |
+| [Claude Blog — Skills](https://claude.com/blog/improving-skill-creator-test-measure-and-refine-agent-skills) | Evaluation-driven skill development with quantitative benchmarks |
 
 ---
 
-*Created by [David-GD13](https://github.com/David-GD13). Targeted for Unity 6.2+ and modern AI workflows.*
+*Created by [devdavv](https://github.com/devdavv). Targeted for Unity 6.2+ and modern AI workflows.*

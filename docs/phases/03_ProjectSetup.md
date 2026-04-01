@@ -1,8 +1,7 @@
 # Phase 3: Project Setup
 
-> **Agent**: Architect
-> **Workflow**: `/setup-project`
-> **Skill**: `unity-project-setup`
+> **Command**: `/uw-cmd-setup-project`
+> **Skills**: `uw-unity-project-setup`, `uw-unity-debugging`
 
 ## Goal
 Create the Unity project skeleton with all infrastructure in place.
@@ -10,7 +9,7 @@ Create the Unity project skeleton with all infrastructure in place.
 ## Activities
 
 ### 0. Dev Mode Selection
-Run `/setup-project` — it begins by asking the user which dev mode they want (Assistant / Mix / Automatic) and, if Automatic, runs a full onboarding Q&A so the AI can proceed independently. See [setup-project.md](../../.agent/workflows/setup-project.md) Step 0.
+Run `/uw-cmd-setup-project` — it begins by asking the user which dev mode they want (Guided / Autonomous) and, if Autonomous, runs a full onboarding Q&A so the AI can proceed independently.
 
 ### 1. Folder Structure
 Create `Assets/_Project/` with all subfolders based on `folder_strategy`.
@@ -22,7 +21,7 @@ Create `.asmdef` files matching the TDD's assembly graph.
 Install all packages from `ProjectConfig.yaml → packages`.
 
 ### 4. Core Utilities
-- Generate `GameDebug.cs` wrapper (via `unity-debugging` skill)
+- Generate `GameDebug.cs` wrapper (via `uw-unity-debugging` skill)
 - Add `ENABLE_LOGS` to Development scripting defines
 - Create core ScriptableObject base classes
 
